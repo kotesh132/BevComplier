@@ -1,0 +1,41 @@
+headersH_ifndef()::=<<
+#ifndef HEADERS_H_
+#define HEADERS_H_
+
+>>
+
+headersH_include()::=<<
+
+#include \<stdint.h>
+#include \<stdlib.h>
+#include "string.h"
+#include \<stdbool.h>
+
+>>
+
+
+headersH_struct(structName, structFieldsMap)::=<<
+typedef struct <structName> {
+	<structFieldsMap.keys:{k | <structFieldsMap.(k)> <k>;<\n>}>
+} <structName>;
+
+>>
+
+headersH_externs(instantiations)::=<<
+
+<!<instantiations : {instantiation | extern <instantiation.typeRef.prefixedType> <instantiation.nameString>;<\n>}>!>
+
+typedef uint8_t packet_in;
+typedef uint8_t packet_out;
+
+>>
+
+headersH_endif()::=<<
+#endif
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>
+
+

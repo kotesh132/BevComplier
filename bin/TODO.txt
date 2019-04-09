@@ -1,0 +1,12 @@
+TODO
+1. Switch case
+2. Dependency graph [***]
+3. control subgraph -in Dot
+4. Main sequence
+5 a. debug with switch.p4
+5 b. debug with sugarbowl
+
+COMPLETED
+1. Basic runner
+2. Control flow graph *
+3. MetaData [IR] extraction

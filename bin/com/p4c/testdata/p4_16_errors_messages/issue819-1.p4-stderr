@@ -1,0 +1,16 @@
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Line:52: Extern definition expects typed params. But the control type arguments aren't typed: WrapControls wc
+Line:57: Extern definition expects typed params. But the control type arguments aren't typed: WrapControls wc
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Not possible to calculate size of ExternsexternWrapControls<T1,T2>{WrapControls(T1t1,T2t2);voidexecute1();voidexecute2();}
+Line:65: Cannot use control control block as a type parameter: WrapControls
+Line:65: Cannot use control control block as a type parameter: WrapControls

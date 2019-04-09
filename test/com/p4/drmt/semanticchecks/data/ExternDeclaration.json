@@ -1,0 +1,16 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/constructor2_e.p4",
+            "expectedData": ["Line:4: No return type specified."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/extern.p4",
+            "expectedData": ["Line:4: Cannot have externs with direction.","Line:9: Cannot have externs with direction."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/duplicateMethod_e.p4",
+            "expectedData": ["Found duplicate method."]
+        }
+    ]
+}

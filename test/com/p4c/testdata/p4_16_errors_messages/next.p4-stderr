@@ -1,0 +1,3 @@
+Line:10: 'stack.last': last on header type can't be lValue
+Line:10: 'stack.last': last and next on header should be present only inside parser
+Line:10: 'stack.last' is incompatible with '{ 10 }'

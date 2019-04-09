@@ -1,0 +1,5 @@
+Line:55::Conditional statement is not allowed.
+Line:53: Action Parameters can't be of control type: c1
+Line:53: Action Parameters can't be of control type: c2
+Line:56: apply statement can not be inside action declaration: 'c1.apply()'
+Line:58: apply statement can not be inside action declaration: 'c2.apply()'

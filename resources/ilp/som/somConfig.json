@@ -1,0 +1,52 @@
+{
+	"somConfig" : [
+		{
+			"numKseg" : 8,
+			"numDseg" : 8,
+			"ksegWidth" : 80,
+			"dsegWidth" : 96,
+			"numReadControllers" : 16,
+			"numWriteControllers" : 16,
+			"numHashControllers" : 16,
+			"numCamControllers" : 16,
+			"numIncControllers" : 16,
+			"entriesPerTable" : 100,
+			"maxTables" : 32,
+			"tcamConfig" : {
+				"numRow" : 2,
+				"numCol" : 8,
+				"words" : 1024,
+				"bits" : 80
+			},
+			"sramConfig" : {
+				"numSram" : 16,
+				"words" : 1024,
+				"bits" : 107
+			},
+			"hashConfig" : {
+				"numHway" : 2,
+				"crcLength" : 15,
+				"maskLength" : 11
+			}
+		}
+	],
+	"pktConfig" : {
+		"pktsPerPath" : 1,
+		"byteVectorLength" : 2048,
+		"bitVectorLength" : 32,
+		"packetLength" : 1024,
+		"useBmv" : false,
+		"headerIds" : {
+			"pie_header" : 0,
+			"ethernet" : 1,
+			"ipv4" : 2,
+			"ipv6" : 3,
+			"tcp" : 4,
+			"udp" : 5
+		},
+		"excludePaths" : [],
+		"includePaths" : [".*parse_ipv4#parse_tcp.*"]
+	},
+	"bmvServerIp" : "127.0.0.1",
+	"bmvServerPort" : 9090
+}

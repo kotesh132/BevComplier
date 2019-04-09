@@ -1,0 +1,9 @@
+Line:10: Ternary Expression should be boolean: a
+Line:10: Ternary Expression should be boolean: a
+Line:10: Expression a ? b : c can't be evaluated at compile time. a is not a compile time constant
+Line:11: Ternary Expression types should match: d ? a : d
+Line:11: Ternary Expression types should match: d ? a : d
+Line:11: Expression d ? a : d can't be evaluated at compile time. d is not a compile time constant
+Line:10: Ternary Expression should be boolean: a
+Line:11: Ternary Expression types should match: d ? a : d
+Line:11: 'd' is incompatible with 'd ? a : d'

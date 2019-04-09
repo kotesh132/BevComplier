@@ -1,0 +1,19 @@
+Line:10: Expression ~b can't be evaluated at compile time. b is not a compile time constant
+Line:11: Expression ~c can't be evaluated at compile time. c is not a compile time constant
+Line:12:  Negate can't be applied on boolean :~d
+Line:14: Expression a + a can't be evaluated at compile time. a is not a compile time constant
+Line:15: Expression a - a can't be evaluated at compile time. a is not a compile time constant
+Line:17:  Addition can't be done on boolean :d + d
+Line:17: 'd' is incompatible with 'd'
+Line:18: Expression d - d can't be evaluated at compile time. d is not a compile time constant
+Line:20:  Not can't be done on non boolean :!a
+Line:21:  Not can't be done on non boolean :!b
+Line:12:  Negate can't be applied on boolean :~d
+Line:12:  Indeterminate Assignment Statement: d = ~d;
+Line:17:  Addition can't be done on boolean :d + d
+Line:17: 'd' is incompatible with 'd'
+Line:17:  Indeterminate Assignment Statement: d = d + d;
+Line:20:  Not can't be done on non boolean :!a
+Line:20:  Indeterminate Assignment Statement: a = !a;
+Line:21:  Not can't be done on non boolean :!b
+Line:21:  Indeterminate Assignment Statement: b = !b;

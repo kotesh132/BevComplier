@@ -1,0 +1,52 @@
+actions_ifndef()::=<<
+#ifndef ACTIONS_H_
+#define ACTIONS_H_
+>>
+
+actions_include()::=<<
+
+#include "headers.h"
+#include "enums.h"
+>>
+
+
+actions_typedefs(controls)::=<<
+
+<controls : {controlName | <actions_typedef(controlName)><\n>}>
+>>
+
+actions_typedef(controlName)::=<<
+
+typedef void (*<controlName>_ActionFn)(uint8_t* data);
+
+typedef struct <controlName>_action_data {
+
+	uint8_t data[20];
+	<controlName>_ActionFn fn;
+	bool hit;
+    action_enum action_run;
+} <controlName>_action_data;
+>>
+
+actions_actions(actionToParamsMap, actionToControlMap)::=<<
+
+<actionToParamsMap.keys : {actionControlName | <actions_action(actionControlName, actionToParamsMap.(actionControlName))>}>
+>>
+
+
+
+actions_action(actionControlName, params)::=<<
+
+void <actionControlName>(<params>);
+void <actionControlName>_action(uint8_t* data);
+
+>>
+
+actions_endif()::=<<
+
+#endif
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

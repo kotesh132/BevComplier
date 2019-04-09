@@ -1,0 +1,5 @@
+line 6: col 11:  no viable alternative at input 'a,'
+line 6: col 17:  extraneous input '=' expecting {'actions', 'apply', 'bool', 'bit', 'const', 'error', 'exit', 'if', 'int', 'key', 'return', 'state', 'switch', 'tuple', 'varbit', IDENTIFIER, ';', '@', '{', '}', '.'}
+line 6: col 21:  mismatched input '10' expecting '}'
+line 6: col 29:  extraneous input ';' expecting '}'
+line 8: col 0:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}

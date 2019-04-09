@@ -1,0 +1,24 @@
+[
+  {
+    "somId": 1,
+    "numSram": 32,
+    "controllerTypesMap": {
+      "numSramControllers": 4,
+      "numTcamControllers": 4,
+      "numReadControllers": 4,
+      "numHashControllers": 4,
+      "numWriteControllers": 4
+    }
+  },
+  {
+    "somId": 2,
+    "numSram": 32,
+    "controllerTypesMap": {
+      "numSramControllers": 4,
+      "numTcamControllers": 4,
+      "numReadControllers": 4,
+      "numHashControllers": 4,
+      "numWriteControllers": 4
+    }
+  }
+]

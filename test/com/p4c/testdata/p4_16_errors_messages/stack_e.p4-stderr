@@ -1,0 +1,4 @@
+Line:11: Number can't be handled. For input string: "1231092310293"
+Line:9: Struct illegal in header stack: s[5]
+Line:12: Accessed array index can't be negative: stack[-2]
+Line:13: Accessed array index size greater that actual array size: stack[6]

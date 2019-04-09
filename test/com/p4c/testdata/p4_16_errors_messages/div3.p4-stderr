@@ -1,0 +1,1 @@
+Line:5: Expression a / b can't be evaluated at compile time. a is not a compile time constant

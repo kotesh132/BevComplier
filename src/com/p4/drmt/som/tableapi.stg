@@ -1,0 +1,50 @@
+
+table_action_add(somId, tableName, actionName, actionPtr)::=<<
+
+task <tableName>_<actionName>_add_entry(integer row_id, input reg [160-1:0] key, input reg [160-1:0] mask, input reg [160-1:0] data);
+	begin
+		add_som_key(<somId>, row_id, key, mask);
+		add_som_data(<somId>, row_id, data, <actionPtr>);
+	end
+endtask
+<\n><\n>
+>>
+
+table_init(somId, tableSelect, tableName, dataSelect, dataValid)::=<<
+
+task <tableName>_init();
+	begin
+		add_som_cfg(<somId>, <tableSelect>, <dataSelect>, <dataValid>, 0);
+	end
+endtask
+<\n><\n>
+>>
+
+table_add(somId, tableName, ifStmt)::=<<
+
+task <tableName>_add_entry(integer row_id, input reg [160-1:0] key, input reg [160-1:0] mask, input reg [160-1:0] data, input string action);
+	begin
+		add_som_key(<somId>, row_id, key, mask);
+		<ifStmt>
+	end
+endtask
+<\n><\n>
+>>
+
+if_stmt(somId, actionName, actionPtr)::=<<
+
+if(action == "<actionName>")
+	add_som_data(<somId>, row_id, data, <actionPtr>);<\n>
+>>
+
+else_if_stmt(somId, actionName, actionPtr)::=<<
+
+else if(action == "<actionName>")
+	add_som_data(<somId>, row_id, data, <actionPtr>);<\n>
+>>
+
+else_stmt(somId, actionName, actionPtr)::=<<
+
+else
+	$error("bad action name");
+>>

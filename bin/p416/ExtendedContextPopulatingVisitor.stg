@@ -1,0 +1,23 @@
+ExtendedContextPopulatingVisitorSkel(grammarName,packageName,imports,ruleNamesMap)::=<<
+
+package <packageName>;
+
+<imports:{import |
+<\n>import <import>;}>
+
+
+public class PopulateExtendedContextVisitor extends <grammarName>BaseVisitor\<ParserRuleContext>{
+
+
+	<ruleNamesMap.keys:{altRuleName |
+	@Override 
+	public ParserRuleContext visit<altRuleName>(<grammarName>Parser.<altRuleName>Context ctx){
+		super.visit<altRuleName>(ctx);
+		ctx.extendedContext = new <ruleNamesMap.(altRuleName)>ContextExt(ctx);
+		ctx.extendedContext.setContext(ctx);
+		return ctx;
+	\}
+	}>;
+
+}
+>>

@@ -1,0 +1,10 @@
+Line:4: Divide by zero!
+Line:4: Divide by zero!
+Line:4: Expression a / 0 can't be evaluated at compile time. a is not a compile time constant
+Line:5: Modulo can't be done by zero!
+Line:5: Modulo can't be done by zero!
+Line:5: Expression a % 0 can't be evaluated at compile time. a is not a compile time constant
+Line:6: Expression a / 8w0 can't be evaluated at compile time. a is not a compile time constant
+Line:7: Expression a % 8w0 can't be evaluated at compile time. a is not a compile time constant
+Line:4: Divide by zero!
+Line:5: Modulo can't be done by zero!

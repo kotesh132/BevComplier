@@ -1,0 +1,1 @@
+Line:54: extract method can't be invoked with header having varbit type: b.extract(p.h);

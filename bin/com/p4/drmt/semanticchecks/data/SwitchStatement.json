@@ -1,0 +1,8 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/duplicate-label.p4",
+            "expectedData": ["Line:11: duplicate switch label."]
+        }
+    ]
+}

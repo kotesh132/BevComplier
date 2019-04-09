@@ -1,0 +1,36 @@
+Entry for action Index[0] cpu[0]
+CPU[0] Instruction Pointer[0]
+t1[1,0] = hdr.ipv4.srcAddr[32,24] != hdr.ipv4.dstAddr[32,20]//Predicate = hdr.ipv4.isValid[1,16]
+*************************
+Entry for action Index[1] cpu[0]
+CPU[0] Instruction Pointer[1]
+t2[1,1] = hdr.ipv4.isValid[1,16] && t1[1,0]
+*************************
+Map entry for table[2], action Index[2] cpu[0]
+CPU[0] Instruction Pointer[2]
+meta.fwd_metadata.out_bd[24,16] = bd[32,0]
+*************************
+Map entry for table[1], action Index[2] cpu[1]
+CPU[1] Instruction Pointer[2]
+meta.fwd_metadata.l2ptr[24,12] = ptr[32,0]
+*************************
+Map entry for table[6], action Index[3] cpu[0]
+CPU[0] Instruction Pointer[3]
+hdr.tcp.srcPort[16,6] = tcp_srcPort[16,0]
+*************************
+Map entry for table[3], action Index[3] cpu[1]
+CPU[1] Instruction Pointer[3]
+hdr.ipv4.dstAddr[32,20] = dst_adr[32,0]
+*************************
+Map entry for table[7], action Index[3] cpu[2]
+CPU[2] Instruction Pointer[3]
+hdr.udp.srcPort[16,8] = udp_srcPort[16,0]
+*************************
+Map entry for table[4], action Index[3] cpu[3]
+CPU[3] Instruction Pointer[3]
+hdr.ipv4.srcAddr[32,24] = src_adr[32,0]
+*************************
+Map entry for table[5], action Index[3] cpu[4]
+CPU[4] Instruction Pointer[3]
+hdr.ipv6.payloadLen[16,4] = ipv6_payloadLen[16,0]
+*************************

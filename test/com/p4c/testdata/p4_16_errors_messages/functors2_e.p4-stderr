@@ -1,0 +1,2 @@
+Line:6: Cannot refer to control inside itself
+Line:6: apply statement can not be inside action declaration: 'p.apply()'

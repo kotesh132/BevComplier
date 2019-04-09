@@ -1,0 +1,5 @@
+ERROR c.p.p.g.AbstractBaseExt - Not possible to calculate size of ExternsexternE{E();voidcall();}
+ERROR c.p.p.g.AbstractBaseExt - Not possible to calculate size of ExternsexternE{E();voidcall();}
+ERROR c.p.p.g.AbstractBaseExt - Not possible to calculate size of ExternsexternE{E();voidcall();}
+ERROR c.p.p.g.AbstractBaseExt - Not possible to calculate size of ExternsexternE{E();voidcall();}
+Line:8: 'E': Action parameters cannot have extern types

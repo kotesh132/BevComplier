@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.github.jknack.Antlr4.tool">
+<stringAttribute key="antlr4.arguments" value="-listener -visitor -encoding UTF-8 -o target/com/p4/p416/gen -package com.p4.p416.gen"/>
+<stringAttribute key="antlr4.grammar" value="/p4jc/grammar/P416.g4"/>
+<stringAttribute key="antlr4.vmArguments" value=""/>
+</launchConfiguration>

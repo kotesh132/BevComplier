@@ -1,0 +1,597 @@
+{
+	"dataSet": [
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/scope.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/scope.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/tuple-to-header.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/tuple-to-header.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/implicit.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/implicit.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue1059.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue1059.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/div.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/div.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/div0.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/div0.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/const1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/const1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/assign.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/assign.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/conditional_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/conditional_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue529-1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue529-1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/binary_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/binary_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/bitExtract_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/bitExtract_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/signs.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/signs.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/struct_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/struct_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/typecheck1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/typecheck1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/width_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/width_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/dup-param.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/dup-param.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/self-call.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/self-call.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/shift_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/shift_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/call-table.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/call-table.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/call1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/call1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/const_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/const_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/default_action.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/default_action.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/default_action1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/default_action1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/directionless.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/directionless.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/constructor_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/constructor_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue561-1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue561-1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue807.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue807.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue816.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue816.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-decl-order.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-decl-order.p4-stderr"
+		},
+		
+		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/dup-param1.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/dup-param1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/dup-param2.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/dup-param2.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/dup-param3.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/dup-param3.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue401.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/issue401.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/equality-fail.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/equality-fail.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/control-verify.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/control-verify.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue818.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/issue818.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/local_instance.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/local_instance.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/package.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/package.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/param.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/param.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/parser-arg.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/parser-arg.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/range_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/range_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue600.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue600.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/dupConst.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/dupConst.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue306.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue306.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue388.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue388.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue394.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue394.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue345.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue345.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue407-1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue407-1.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue532.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue532.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/next.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/next.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/push_nonconstant.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/push_nonconstant.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/control-inline.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/control-inline.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/function_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/function_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/function1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/function1_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/constructor3_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/constructor3_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue584.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue584.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue764.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue764.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/stack2.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/stack2.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/type-params_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/type-params_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/type-field.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/type-field.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue819-1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue819-1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue819.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue819.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/generic1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/generic1_e.p4-stderr"
+		},
+		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/interface_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/interface_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/interface1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/interface1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue344.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue344.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/typecheck_e.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/typecheck_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue1006-1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue1006-1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/module_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/module_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/mux_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/mux_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/neg.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/neg.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/stack_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/stack_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/stack1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/stack1_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/spec-ex32_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/spec-ex32_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue477.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue477.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue478.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue478.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/div1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/div1.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/div3.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/div3.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/persistent_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/persistent_e.p4-stderr"
+		},		
+		
+		
+		
+		
+		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-exact.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-exact.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-lpm.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-lpm.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-ternary.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-ternary.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-range.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-range.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-exact-ternary.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-exact-ternary.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/action-bind1.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/action-bind1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/action-bind2.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/action-bind2.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/action-bind3.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/action-bind3.p4-stderr"
+		},		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/extract.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/extract.p4-stderr"
+		},		
+		
+		
+		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/tuple-left.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/tuple-left.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/accept_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/accept_e.p4-stderr"
+		},		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/nostart.p4",
+			"expectedData": ["Line:2: No start state."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/underscore1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/underscore1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/underscore_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/underscore_e.p4-stderr"
+		},		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/constructor2_e.p4",
+			"expectedData": ["Line:4: No return type specified."]
+		},		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/constructor1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/constructor1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/wrong-cast.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/wrong-cast.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/underscore3_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/underscore3_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/underscore2_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/underscore2_e.p4-stderr"
+		},	
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/duplicateMethod_e.p4",
+			"expectedData": ["Found duplicate method."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/functors2_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/functors2_e.p4-stderr"
+		},
+        {
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/extract1.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/extract1.p4-stderr"
+		},
+		
+		
+		
+		
+		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/action-bind.p4",
+			"expectedDataFile": "test/com/p4c/testdata/p4_16_errors_messages/action-bind.p4-stderr"
+		},
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+		
+		
+		
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-non-const.p4",
+			"expectedDataFile" : "test/com/p4c/testdata/p4_16_errors_messages/table-entries-non-const.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue413.p4",
+			"expectedData": ["Line:228: Action calls are not allowed within parsers."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/duplicate-label.p4",
+			"expectedData": ["Line:11: duplicate switch label."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/header1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/header1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/expression_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/expression_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/missing_actions.p4",
+			"expectedData": ["Table does not have an 'actions' property."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/p_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/p_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/globalVar_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/globalVar_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue513.p4",
+			"expectedData": ["Line:229::Conditional statement is not allowed."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue816.p4",
+			"expectedData": ["TBD"]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/not_bound.p4",
+			"expectedData": ["Line:208: Parameter port must be bound."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/twovarbit.p4",
+			"expectedData": ["Multiple varbit fields in a header."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/virtual4.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/virtual4.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue67.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue67.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue272.p4",
+			"expectedData": ["Line:44: Header boolfield cannot have type bool."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue774-1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue774-1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/virtual1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/virtual1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/virtual5.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/virtual5.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/v1_errors/missing_decls1.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/missing_decls1.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/virtual2.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/virtual2.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/stack3.p4",
+			"expectedData": ["Line:54: Size of header stack type should be a constant.","Line:55: Size of header stack type should be a constant."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/virtual6.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/virtual6.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/template_e.p4",
+			"expectedData": ["Line:2: Duplicates declaration."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/dup-param3.p4",
+			"expectedData": ["TBD"]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/key-name.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/key-name.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/width1_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/width1_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue774-2.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/issue774-2.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/virtual3.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/virtual3.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/header3.p4",
+			"expectedData": ["Line:4: Tuples are not allowed in header."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/extern.p4",
+			"expectedData": ["TBD"]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/header2_e.p4",
+			"expectedData": ["Line:6: No struct fields are allowed in headers.", "Line:18: No Struct field allowed in header_union.", "Line:19: No non-header field allowed in header_union."]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/functors3_e.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/functors3_e.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue435.p4",
+			"expectedData": ["TBD"]
+		},	
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/inro.p4",
+			"expectedData": ["TBD"]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/table-entries-outside-table.p4",
+			"expectedDataFile":"test/com/p4c/testdata/p4_16_errors_messages/table-entries-outside-table.p4-stderr"
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/missing_match.p4",
+			"expectedData": ["Could not find declaration, should be exact/lpm/ternary"]
+		},
+		{
+			"inputFile": "test/com/p4c/testdata/p4_16_errors/issue803-1.p4",
+			"expectedData": ["Line:54: Passing 1 arguments when 0 expected."]
+		}
+	]
+}

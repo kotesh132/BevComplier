@@ -1,0 +1,6 @@
+line 236: col 10:  no viable alternative at input 'entries'
+line 238: col 12:  extraneous input '0x1181' expecting {'action', 'apply', 'bool', 'bit', 'const', 'error', 'int', 'table', 'tuple', 'varbit', IDENTIFIER, '@', '.'}
+line 238: col 56:  no viable alternative at input ';'
+line 239: col 12:  extraneous input '0x1181' expecting {'action', 'apply', 'bool', 'bit', 'const', 'error', 'int', 'table', 'tuple', 'varbit', IDENTIFIER, '@', '.'}
+line 239: col 56:  no viable alternative at input ';'
+line 240: col 8:  extraneous input '}' expecting {'action', 'apply', 'bool', 'bit', 'const', 'error', 'int', 'table', 'tuple', 'varbit', IDENTIFIER, '@', '.'}

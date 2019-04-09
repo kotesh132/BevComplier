@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+if [ $# -eq 0 ]
+then
+echo "No arguments supplied"
+else
+echo "Running Simulation..."
+cfgdir=$1
+runscript="$cfgdir/run_cmd_sw"
+if [ -x "$runscript" ]
+then
+echo "Found script"
+srciptpath=`pwd -P`
+cd $cfgdir
+echo "CWD =  $srciptpath"
+./run_cmd_sw "$srciptpath"
+fi
+fi

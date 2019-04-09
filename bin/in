@@ -1,0 +1,63 @@
+typedef bit<48>  EthernetAddress;
+typedef bit<32>  IPv4Address;
+
+// standard Ethernet header
+header Ethernet_h {
+    EthernetAddress dstAddr;
+    EthernetAddress srcAddr;
+    bit<16>         etherType;
+}
+
+// IPv4 header without options
+header Ipv4_h {
+    bit<4>       version;
+    bit<4>       ihl;
+    bit<8>       diffserv;
+    bit<16>      totalLen;
+    bit<16>      identification;
+    bit<3>       flags;
+    bit<13>      fragOffset;
+    bit<8>       ttl;
+    bit<8>       protocol;
+    bit<16>      hdrChecksum;
+    IPv4Address  srcAddr;
+    IPv4Address  dstAddr;
+}
+
+// Parser section
+
+// Declare user-defined errors that may be signaled during parsing
+error {
+    IPv4OptionsNotSupported,
+        IPv4IncorrectVersion,
+        IPv4ChecksumError
+}
+
+// List of all recognized headers
+struct Parsed_packet {
+    Ethernet_h ethernet;
+    Ipv4_h     ip;
+}
+
+parser TopParser(packet_in b, out Parsed_packet p) {
+    Ck16() ck;  // instantiate checksum unit
+
+    state start {
+        b.extract(p.ethernet);
+        transition select(p.ethernet.etherType) {
+			0x0800 : parse_ipv4;
+         // no default rule: all other packets rejected
+        }
+    }
+
+    state parse_ipv4 {
+        b.extract(p.ip);
+        verify(p.ip.version == 4w4, error.IPv4IncorrectVersion);
+        verify(p.ip.ihl == 4w5, error.IPv4OptionsNotSupported);
+        ck.clear();
+        ck.update(p.ip);
+        // Verify that packet checksum is zero
+        verify(ck.get() == 16w0, error.IPv4ChecksumError);
+        transition accept;
+    }
+}

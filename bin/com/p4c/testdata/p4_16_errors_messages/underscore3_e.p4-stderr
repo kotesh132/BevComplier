@@ -1,0 +1,4 @@
+line 2: col 10:  no viable alternative at input '_'
+Line:2:: Width of a bit<> type is at least 0.
+Line:2: Type of a constant should be either bit<>, int<> or int.
+Line:2: Constant names cannot be underscore.

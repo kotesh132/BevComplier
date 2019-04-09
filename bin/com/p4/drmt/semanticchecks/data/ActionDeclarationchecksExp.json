@@ -1,0 +1,12 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4/drmt/semanticchecks/data/actiondeclaration.p4",
+            "expectedData": ["Line:3::Switch statement is not allowed.","Line:12::Switch statement is not allowed."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/issue513.p4",
+            "expectedData": ["Line:229::Conditional statement is not allowed."]
+        }
+    ]
+}

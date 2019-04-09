@@ -1,0 +1,7 @@
+Round Robin Rollover time (pu_proc_max) = 3
+Packet for proc[0] at = 0
+Total schedule length = 89
+Stall delay  = 60
+Back Pressure Threshold  = 2
+Match Delay  = 29
+Action Delay  = 13

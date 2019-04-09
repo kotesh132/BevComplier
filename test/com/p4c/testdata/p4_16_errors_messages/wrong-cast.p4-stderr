@@ -1,0 +1,7 @@
+Line:1: Type of a constant should be either bit<>, int<> or int.
+Line:2: Type of a constant should be either bit<>, int<> or int.
+Line:3: Type of a constant should be either bit<>, int<> or int.
+Line:2: '2s0' can not be cast to 'BoolType'
+Line:2:  Indeterminate Assignment Statement: const bool c = (bool)2s0;
+Line:3: '10w0' can not be cast to 'BoolType'
+Line:3:  Indeterminate Assignment Statement: const bool d = (bool)10w0;

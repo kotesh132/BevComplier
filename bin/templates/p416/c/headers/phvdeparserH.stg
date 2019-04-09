@@ -1,0 +1,24 @@
+phvdeparserH_ifndef()::=<<
+#ifndef PHVDEPARSER_H_
+#define PHVDEPARSER_H_
+>>
+
+phvdeparserH_include()::=<<
+
+#include "headers.h"
+>>
+
+
+phvdeparserH_method_decl(params)::=<<
+void deParsePacketVector(<params>);
+>>
+
+
+phvdeparserH_endif()::=<<
+
+#endif
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

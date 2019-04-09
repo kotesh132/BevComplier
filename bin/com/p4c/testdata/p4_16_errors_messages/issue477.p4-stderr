@@ -1,0 +1,2 @@
+Line:53: error: p.h: not a header
+Line:53: extract method invoked with non header type argument: b.extract(p.h);

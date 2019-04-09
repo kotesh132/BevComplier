@@ -1,0 +1,5 @@
+Line:7 illegal, cannot bind directionless data parameter.
+Line:7: error: 0: parameter d cannot be bound: it is set by the control plane.
+Line:8: a: not enough arguments.
+Line:8: error: a: parameter d must be bound.
+Line:6: Table does not have an 'key' property.

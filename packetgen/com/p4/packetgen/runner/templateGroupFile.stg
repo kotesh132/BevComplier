@@ -1,0 +1,402 @@
+PacketClass(filename)::=<<
+#include \<iostream>
+#include \<csolver.h>
+#include \<cassert>
+#include \<csolver/systemc.h>
+
+using sc_dt::sc_bv;
+using namespace csolver;
+using namespace std;
+#include "<filename>"
+
+class PacketPayload : public rand_obj_base {
+public:
+        rand_var\< sc_bv \< 16 > >  payload;
+
+        PacketPayload(rand_obj_base* parent = NULL) :
+            rand_obj_base(parent),
+            payload(this,"payload") {}
+
+        string toString(){
+        	std::stringstream ss;
+            ss \<\< "{";
+            ss \<\< std::hex \<\< payload.getValue();
+            ss \<\< "}";
+            return ss.str();
+        }
+};
+
+class Packet {
+public:
+        PacketHeader header;
+        PacketPayload payload;
+        Packet() : header(),payload() {}
+
+        void randomize(){
+                header.randomize();
+                payload.randomize();
+        }
+
+        string toString(){
+                std::stringstream ss;
+                ss \<\< "{";
+                ss \<\< "\"PacketHeader\" :";
+                ss \<\< header.toString();
+                ss \<\< ",";
+                ss \<\< "\"PacketPayload\" :";
+                ss \<\< payload.toString();
+                ss \<\< "}";
+                return ss.str();
+        }
+};
+>>
+
+
+
+
+Top(stmts)::=<<
+#include \<iostream>
+#include \<cassert>
+#include \<iomanip>
+#include \<csolver.h>
+#include \<csolver/systemc.h>
+using sc_dt::sc_bv;
+using namespace csolver;
+using namespace std;
+
+
+// overloaded templates come in pack of 5.
+// 1 and 2 are general, 2 is const version of 1.
+// 3,4,5 are template specializations . Templates are required
+// since class T can accept all unknown and plain old datatype(PODs).
+
+// 1st is for unknown and plain old types.
+// 2nd is for const obj of unknown and plain old const type.
+// 3rd is for const sc_bv &.
+// 4rth is defined as const obj& for the class itself so that when used
+// as an aggregate it supports all the methods. It is defined
+// below the class so that class definition is visible to the method.
+// 5th is for non-const objects of type 4.
+
+template\<class T> int GETLEN(T& obj) { return (CHAR_BIT*sizeof(obj)); }
+template\<class T> int GETLEN(const T& obj) { return (CHAR_BIT*sizeof(obj)); }
+template\<int W> int GETLEN(const sc_bv\<W>& obj) { return obj.length(); }
+
+
+template\<class T> void FILLVAL(const string &s,T& obj) { obj=strtol(s.c_str(),NULL,2); }
+template\<int W> void FILLVAL(const string &s,sc_bv\<W> & obj) { obj=sc_bv\<W>(s.c_str()); }
+
+
+template\<class T> string PRINTVAL(T &obj) { stringstream ss; ss \<\<hex \<\< obj; return ss.str(); }
+template\<class T> string PRINTVAL(const T &obj) { stringstream ss; ss \<\<hex \<\< obj; return ss.str(); }
+template\<int W> string PRINTVAL(const sc_bv\<W> &obj) { return obj.to_string(SC_HEX); }
+
+
+template\<class T> string SERIALIZE(T& obj) { sc_bv\<sizeof(T)*CHAR_BIT> x(obj); return x.to_string();}
+template\<class T> string SERIALIZE(const T& obj) { const sc_bv\<sizeof(T)*CHAR_BIT> x(obj); return x.to_string();}
+template\<int W> string SERIALIZE(const sc_bv\<W>& obj) { return obj.to_string(); }
+
+
+<stmts :{ item |<item><\n>}>
+>>
+
+
+ClassWithBv(classname,fieldsMap,constraint) ::= <<
+class <classname> : public rand_obj_base {
+	<fields(fieldsMap)>
+	dist_set\<int> items;
+	<constructor(classname,fieldsMap,constraint)>
+	<getJsonApi(fieldsMap)>
+	<getValueApi(classname)>
+
+friend void deserialize(const string &s,<classname> &obj){
+		int off=0;
+		 <fieldsMap.keys:{k | FILLVAL(s.substr(off,GETLEN(obj.<k>.getValue())),obj.<k>.getValueRef());<\n> off+=GETLEN(obj.<k>.getValue()); <\n> }>
+
+		return;
+	}
+
+	friend bool CMP( const <classname> &x, const <classname> &y) {
+		return true
+			<fieldsMap.keys:{k | && (x.<k>.getValue()==y.<k>.getValue())<\n> }>;
+	}
+
+};<\n>
+template\<> int GETLEN(const <classname> &obj)  { return obj.getLength(); }
+template\<> int GETLEN( <classname> &obj)  { return obj.getLength(); }
+template\<> string PRINTVAL(const <classname> &obj) { return obj.toString(); }
+template\<> string PRINTVAL( <classname> &obj) { return obj.toString(); }
+template\<> string SERIALIZE(const <classname> &obj) { return obj.serialize(); }
+template\<> string SERIALIZE( <classname> &obj) { return obj.serialize(); }
+template\<> void FILLVAL( const string &s,<classname> &obj) { deserialize(s,obj); }
+
+>>
+
+RegularClass(classname,extendedClassList,fieldsMap) ::= <<
+class <classname> {
+	<fields(fieldsMap)>
+	<getJsonApi(fieldsMap)>
+	<getValueApi(classname)>
+
+	friend bool CMP( const <classname> &x, const <classname> &y) {
+		return true
+			<fieldsMap.keys:{k | && CMP(x.<k>.getValue(),y.<k>.getValue())<\n> }>;
+	}
+
+	friend void deserialize(const string &s,<classname> &obj){
+		int off=0;
+		 <fieldsMap.keys:{k | FILLVAL(s.substr( off,GETLEN(obj.<k>.getValue())) ,obj.<k>) ;<\n>off+=GETLEN(obj.<k>.getValue()); <\n>}>
+
+		return;
+	}
+};<\n>
+template\<> int GETLEN(<classname> &obj)  { return obj.getLength(); }
+template\<> int GETLEN(const <classname> &obj)  { return obj.getLength(); }
+template\<> string PRINTVAL(const <classname> &obj)  { return obj.toString(); }
+template\<> string PRINTVAL(<classname> &obj)  { return obj.toString(); }
+template\<> string SERIALIZE(const <classname> &obj) { return obj.serialize(); }
+template\<> string SERIALIZE( <classname> &obj) { return obj.serialize(); }
+template\<> void FILLVAL( const string &s,<classname> &obj) { deserialize(s,obj); }
+>>
+
+fields(fieldsMap)::=<<
+public:
+<fieldsMap.keys:{k |
+<fieldsMap.(k)> <k>;<\n>}>
+>>
+
+constructor(classname,fieldsMap,constraint)::=<<
+<classname>(rand_obj_base* parent = NULL) :
+rand_obj_base(parent),
+<trunc(fieldsMap.keys):{k |
+<k>(this,"<k>"),<\n>}><last(fieldsMap.keys):{k |<k>(this,"<k>")}> {
+	<constraint>
+}
+ >>
+ 
+getJsonApi(fieldsMap)::=<<
+
+int getLength() const {
+	return  <trunc(fieldsMap.keys):{k | GETLEN(<k>.getValue()) + }> <last(fieldsMap.keys):{k | GETLEN(<k>.getValue())  }> ;
+}
+
+
+string serialize() const {
+	return <trunc(fieldsMap.keys):{k | SERIALIZE(<k>.getValue()) + }> <last(fieldsMap.keys):{k | SERIALIZE(<k>.getValue())  }> ;
+}
+
+
+int length() const {
+	return getLength();
+}
+const string toString()  const {
+	std::stringstream ss;
+    ss \<\< "{";
+    <trunc(fieldsMap.keys):{k |ss \<\< "\"<k>\" :";
+ss \<\< std::hex \<\< PRINTVAL(<k>.getValue());
+ss \<\< ",";<\n>}>  <last(fieldsMap.keys):{k |   ss \<\< "\"<k>\" :";
+	ss \<\< std::hex \<\< PRINTVAL(<k>.getValue());}>
+    ss \<\< "}";
+    const string s= ss.str();
+	return s;
+}
+string toString()  {
+	std::stringstream ss;
+    ss \<\< "{";
+    <trunc(fieldsMap.keys):{k |ss \<\< "\"<k>\" :";
+ss \<\< std::hex \<\< PRINTVAL(<k>.getValue());
+ss \<\< ",";<\n>}>  <last(fieldsMap.keys):{k |   ss \<\< "\"<k>\" :";
+	ss \<\< std::hex \<\< PRINTVAL(<k>.getValue());}>
+    ss \<\< "}";
+    return ss.str();
+}
+ >>
+ 
+getValueApi(classname)::=<<
+<classname>&  getValue() {
+	return *this;
+}
+ const <classname>&  getValue() const {
+	return *this;
+}
+
+>>
+
+
+
+error(errorlist) ::= <<
+enum  error{
+<trunc(errorlist) :{errorname | 
+  <errorname>,}>
+  <last(errorlist)>
+};<\n>
+>>
+
+headers(headerlist) ::= <<
+<headerlist :{ item |<item><\n>}>
+>>
+
+typedef(type, bvtype, length, name) ::= << 
+typedef <type> \< <bvtype> \< <length> > > <name>;
+>>
+
+AddConstraintsApiForPacketHeader(constraintLines)::=<<
+void addConstraints(){
+	<trunc(constraintLines) :{ item |<item><\n>}>
+	<last(constraintLines) :{ item | <item>}>
+}
+>>
+
+constructorForPacketHeader(vars)::=<<
+PacketHeader():
+	<first(vars) : { var | 	<var.name>(NULL)}>
+	<rest(vars) :{ var |, <var.name>(NULL)}>
+{}
+>>
+
+PacketHeader(stmts) ::=<<
+class PacketHeader { 
+public:
+	<trunc(stmts) :{ item |<item><\n>}>
+	<last(stmts) :{ item | <item>}>
+};
+>>
+
+variable(type,name)::=<<
+<type> <name>;
+>>
+
+getLengthApi(stmts)::=<<
+int getLength(){
+
+    return 0 <stmts:{ line| + <line.name>.getLength()}>;
+
+}
+>>
+
+getdeserializeApi(stmts)::=<<
+friend void deserialize(const string &s,PacketHeader &pkth){
+		int off=0;
+		<stmts:{ line| deserialize(s.substr(off,GETLEN(pkth.<line.name>)),pkth.<line.name>);<\n> off+=GETLEN(pkth.<line.name>);<\n>}>
+		return;
+	}
+>>
+
+getCMPApi(stmts)::=<<
+friend bool CMP(PacketHeader &p1,PacketHeader &p2){
+		return true
+		<stmts:{ line| && CMP(p1.<line.name>,p2.<line.name>)<\n>}>;
+	}
+>>
+
+
+
+
+getserializeApi(stmts)::=<<
+	string serialize(){
+		return "" <stmts:{ line| + <line.name>.serialize()}>;
+	}
+>>
+
+
+randomizeApi(stmts)::=<<
+void randomize(){
+	addConstraints();
+	<trunc(stmts) :{ item |<item>}>
+	<last(stmts) :{item | <item>}>
+}<\n>
+>>
+
+
+randomizeExtract(name)::=<<
+<name>.randomize();
+>>
+
+ToStringApi(stmts)::=<<
+string toString() const {
+	std::stringstream ss;
+	ss \<\< "{";
+	<trunc(stmts) :{ item |<item>}>
+	<last(stmts) :{item | <item>}>
+	ss \<\< "}";
+	return ss.str();
+}
+>>
+
+extractObj(name) ::= <<
+ss \<\< "\"<name>\" :";
+ss \<\< <name>.toString();
+>>
+
+notOfOrConditionsForConstructor(stmts)::=<<
+!((<first(stmts)>) <rest(stmts) :{condition | || (<condition>) }>)
+>>
+
+weights(class,first,second,varname)::=<<
+<class><varname>items.addWeightedItem(<first>,<second>);
+>>
+
+implicationConstraints(class,value,expression,varname)::=<<
+<class><varname>dummy() == <value> \>>= <expression>
+>>
+
+dist(lines)::=<<
+<first(lines) :{ item |<item>}><rest(lines) :{ item | <\n><item>}>
+>>
+
+constraint(classOrGen,class,lines,varname)::=<<
+<classOrGen>constraint((
+	dist(<class><varname>dummy(),<class><varname>items),
+	<trunc(lines) :{ item |<item>,<\n>}>	<last(lines) :{ item | <item>}>
+));
+>>
+
+hardSetBits(type,bits,value)::=<<
+<type>.fillval(<bits>,<value>);
+>>
+
+linesforGenerator(classOrGen,class,distLines,constLines,varname)::=<<
+generator <varname>gen;
+dist_set\<int> <varname>items;
+rand_var\<int> <varname>dummy(NULL);
+<dist(distLines)>
+<constraint(classOrGen,class,constLines,varname)>
+<classOrGen>randomize();
+>>
+
+constraintLinesForConstructor(class,classOrGen,preLines,distLines,constLines,varname)::=<<
+<first(preLines) :{ item |<item>}><rest(preLines) :{ item | <\n><item>}>
+<dist(distLines)>
+<constraint(classOrGen,class,constLines,varname)>
+>>
+
+condition(lhs,op,rhs)::=<<
+<lhs>() <op> <rhs>
+>>
+
+conditions(conditions,op)::=<<
+<first(conditions)> <rest(conditions) :{condition | <op> <condition> }>
+>>
+
+ifCond(objecttype,select) ::= <<
+<objecttype>.getValue() == <select>
+>>
+
+ifObj(condition,stmts) ::=<<
+if(<condition>){
+	<first(stmts) :{ item |<item>}>
+	<rest(stmts) :{ item | <item>}>
+}
+>>
+
+elseifObj(condition,stmts) ::=<<
+else <ifObj(condition,stmts)>
+>>
+
+elseObj(stmts)::=<<
+else {
+	<first(stmts) :{ item |<item>}>
+	<rest(stmts) :{ item | <item>}>
+}
+>>
+

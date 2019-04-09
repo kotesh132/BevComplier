@@ -1,0 +1,2 @@
+Line:4: Parser state 'accept' should not be implemented, it is built-in
+Line:2: No start state.

@@ -1,0 +1,4 @@
+Line:9 error: a: b parameter must be bound.
+Line:9 error: a: b different bound argument.
+Line:9 error: y: argument does not match declaration in actions list: a
+Line:7: Table does not have an 'key' property.

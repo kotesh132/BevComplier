@@ -1,0 +1,5 @@
+Line:10: 'stack1' is incompatible with 'stack2'
+Line:11: cannot be the target of an assignment: stack1.lastIndex
+Line:11: 'stack1.lastIndex' is incompatible with '3'
+Line:12: cannot be the target of an assignment: stack2.size
+Line:12: 'stack2.size' is incompatible with '4'

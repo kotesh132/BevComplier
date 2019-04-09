@@ -1,0 +1,2 @@
+Line:4: Table does not have an 'key' property.
+Line:9: apply statement can not be inside action declaration: 't.apply()'

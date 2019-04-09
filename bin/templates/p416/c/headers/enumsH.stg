@@ -1,0 +1,43 @@
+enumsH_ifndef()::=<<
+#ifndef ENUMS_H_
+#define ENUMS_H_
+
+>>
+
+enumsH_matchKinds(matchKinds)::=<<
+typedef enum match_kind {
+	<matchKinds : {matchKind | MATCH_KIND_<matchKind>,<\n>}>
+} match_kind;
+
+>>
+
+enumsH_operators(operatorsEnum)::=<<
+typedef enum operators {
+	<operatorsEnum>
+} operators;
+
+>>
+
+enumsH_actions(actionsEnum)::=<<
+typedef enum action_enum {
+	<actionsEnum>
+} action_enum;
+
+>>
+
+enumsH_hashAlgorithms()::=<<
+typedef enum HashAlgorithm {
+    crc32,
+    crc16,
+    identity
+} HashAlgorithm;
+>>
+
+enumsH_endif()::=<<
+
+#endif
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

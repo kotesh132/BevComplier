@@ -1,0 +1,6 @@
+Line:4: Division not defined on negative values: a / -1
+Line:4: Expression a / -1 can't be evaluated at compile time. a is not a compile time constant
+Line:5: Expression -5 / a can't be evaluated at compile time. a is not a compile time constant
+Line:6: Modulo not defined on negative values: a % -1
+Line:6: Expression a % -1 can't be evaluated at compile time. a is not a compile time constant
+Line:7: Expression -5 % a can't be evaluated at compile time. a is not a compile time constant

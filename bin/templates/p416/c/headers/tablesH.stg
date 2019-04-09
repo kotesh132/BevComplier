@@ -1,0 +1,54 @@
+tables_ifndef()::=<<
+#ifndef TABLES_H_
+#define TABLES_H_
+
+>>
+
+tables_include()::=<<
+
+#include \<stdint.h>
+#include "actions.h"
+#include "headers.h"
+#include "enums.h"
+>>
+
+tables_vars()::=<<
+
+typedef struct key_element_struct {
+	uint8_t field[10];
+	match_kind type;
+	int bitSize;
+} key_element_struct;
+>>
+
+tables_typedefs(tableObjects)::=<<
+
+<tableObjects : {tableObject | <tables_typedef(tableObject.control.nameString, tableObject)><\n>}>
+>>
+
+
+tables_typedef(controlName, tableObject)::=<<
+
+typedef struct <controlName>_<tableObject.nameString>_key {
+    <tableObject.keyElements : {keyElement | key_element_struct field<i>;<\n>}>
+} <controlName>_<tableObject.nameString>_key;
+
+typedef struct <controlName>_<tableObject.nameString>_table {
+	<controlName>_<tableObject.nameString>_key key;
+	<controlName>_ActionFn default_action;
+	int size;
+	int id;
+} <controlName>_<tableObject.nameString>_table;
+
+<controlName>_action_data <controlName>_<tableObject.nameString>_apply();
+
+>>
+
+tables_endif()::=<<
+#endif
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>
+

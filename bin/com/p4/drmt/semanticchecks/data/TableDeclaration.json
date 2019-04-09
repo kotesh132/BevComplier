@@ -1,0 +1,12 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/missing_actions.p4",
+            "expectedData": ["Line:44: Table does not have an 'actions' property."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/missing_match.p4",
+            "expectedData": ["Line:6: Could not find declaration, should be exact/lpm/ternary."]
+        }
+    ]
+}

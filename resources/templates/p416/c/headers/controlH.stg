@@ -1,0 +1,38 @@
+controlH_ifndef()::=<<
+#ifndef CONTROL_H_
+#define CONTROL_H_
+>>
+
+controlH_include()::=<<
+
+#include "headers.h"
+>>
+
+controlH_vars(controlMethodsApplyMap)::=<<
+
+<controlMethodsApplyMap.keys : {controlName | <controlH_struct(controlName)><\n>} >
+>>
+
+controlH_struct(controlName)::=<<
+
+typedef struct <controlName> {
+
+} <controlName>;
+>>
+
+
+controlH_method_decl(controlMethodsApplyMap)::=<<
+
+<controlMethodsApplyMap.keys: {controlName | void <controlName>_apply(<controlMethodsApplyMap.(controlName)>);<\n>}>
+>>
+
+
+
+controlH_endif()::=<<
+
+#endif
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

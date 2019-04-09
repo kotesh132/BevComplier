@@ -1,0 +1,26 @@
+[
+  {
+    "tableId": 1,
+    "keyWidth": 80,
+    "keyType": "lpm",
+    "dataWidth" : 80,
+    "numEntries": 13,
+    "disjointBucket" : 1,
+    "controllerTypesMap": {
+      "numCamControllers": 1,
+      "numReadControllers": 1
+    }
+  },
+  {
+    "tableId": 2,
+    "keyWidth": 80,
+    "keyType": "lpm",
+    "dataWidth" : 80,
+    "numEntries": 12,
+    "disjointBucket" : 1,
+    "controllerTypesMap": {
+      "numCamControllers": 1,
+      "numReadControllers": 1
+    }
+  }
+]

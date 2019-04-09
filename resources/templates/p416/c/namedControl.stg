@@ -1,0 +1,157 @@
+namedControl_include()::=<<
+#include \<stdio.h>
+#include \<stdlib.h>
+#include "control.h"
+#include "headers.h"
+#include "actions.h"
+#include "tables.h"
+#include "primitives.h"
+#include "enums.h"
+#include "pd.h"
+#include "utility.h"
+#include "checksums.h"
+>>
+
+
+namedControl_staticVar(staticVar)::=<<
+
+<staticVar>
+>>
+
+namedControl_externs()::=<<
+
+extern const void* all_actions[];
+extern const void* control_action_map[];
+>>
+
+
+//start1
+namedControl_actions_staticP4Actions()::=<<
+
+static void mark_to_drop(){
+
+}
+>>
+//end1
+
+
+//start2
+namedControl_actions_action(actionControlName, actionParams, actionBody, redirectActionBody)::=<<
+
+void <actionControlName>(<actionParams>){
+<actionBody>
+}
+
+void <actionControlName>_action(uint8_t* data)
+{
+<redirectActionBody>
+}
+>>
+//end2
+
+
+
+//start1
+namedControl_tables_lookup_methods(tableObjects)::=<<
+
+<tableObjects : {tableObject | <tables_lookup_method(tableObject.control.nameString, tableObject.nameString)><\n>}>
+>>
+
+tables_lookup_method(controlName, tableName)::=<<
+
+static void <controlName>_<tableName>_lookup(int tableId, uint8_t* tableKey, <controlName>_action_data* <controlName>_action_data_obj){
+
+	uint8_t tableData[21] = {0};
+
+	bool hit = table_look_up(tableId, tableKey, tableData);
+
+	<controlName>_action_data_obj->action_run = tableData[0];
+	<controlName>_action_data_obj->fn = all_actions[tableData[0]];
+	memcpy(<controlName>_action_data_obj->data, tableData+1, 20);
+	<controlName>_action_data_obj->hit = hit;
+
+	printf("Action to run: %s\n", control_action_map[tableData[0]]);
+}
+>>
+//end1
+
+
+//start2
+namedControl_tables_match_methods(tableObjects)::=<<
+
+<tableObjects : {tableObject | <tables_match_method(tableObject.control.nameString, tableObject, tableObject.nameString, tableObject.keyElements)>}>
+>>
+
+tables_match_method(controlName, tableObject, tableName, keyElements)::=<<
+
+static void <controlName>_<tableName>_match(<controlName>_action_data* <controlName>_action_data_obj){
+
+	//Key generation
+	uint8_t tableKey[20] = {0};
+	int bitOffset = 0;
+	<keyElements: {keyElement
+	|
+<if (keyElement.bitSliced)>EMIT_BITS_SLICED(tableKey, (uint8_t *)&(<keyElement.keyName>), bitOffset, <keyElement.bitSliceFrom>, <keyElement.bitSliceTo>);<\n>bitOffset = bitOffset + <keyElement.bitSliceTo> - <keyElement.bitSliceFrom> + 1; <\n>
+<else>EMIT_BITS(tableKey, (uint8_t *)&(<keyElement.keyName>), bitOffset, <keyElement.keySymbol.sizeInBits>);<\n>bitOffset = bitOffset + <keyElement.keySymbol.sizeInBits>; <\n>
+<endif>
+	}>
+	//lookup
+	print_hex("key generated :", tableKey, 20);
+	<controlName>_<tableObject.nameString>_lookup(<tableObject.tableId>, tableKey, <controlName>_action_data_obj);
+
+}
+>>
+//end2
+
+//start3
+namedControl_tables_apply_methods(tableObjects)::=<<
+
+<tableObjects : {tableObject | <table_apply_method(tableObject.control.nameString, tableObject.nameString)><\n>}>
+>>
+
+table_apply_method(controlName, tableName)::=<<
+
+<controlName>_action_data <controlName>_<tableName>_apply(){
+	printf("\nApplying match on table: <tableName>\n");
+
+	<controlName>_action_data <controlName>_action_data_obj;
+	//initialization
+	memset(<controlName>_action_data_obj.data, 0, sizeof(<controlName>_action_data_obj.data));
+	<controlName>_action_data_obj.hit = false;
+	<controlName>_action_data_obj.fn = NULL;
+
+	//perform match
+	<controlName>_<tableName>_match(&<controlName>_action_data_obj);
+
+	//execute action
+	<controlName>_action_data_obj.fn(<controlName>_action_data_obj.data);
+
+	return <controlName>_action_data_obj;
+}
+>>
+//end3
+
+//start4
+namedControl_extractedMethods(extractedMethods)::=<<
+
+<extractedMethods : {method | <method>}>
+>>
+
+namedControl_apply(controlMethodName, controlMethodArguments, controlMethodBody, controlMethodCopyInArgInit, controlMethodCopyOutArgInit)::=<<
+
+void <controlMethodName>_apply(<controlMethodArguments>)
+{
+	//copyIn
+<controlMethodCopyInArgInit>
+
+<controlMethodBody>
+
+	//copyOut
+<controlMethodCopyOutArgInit>
+}
+>>
+
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

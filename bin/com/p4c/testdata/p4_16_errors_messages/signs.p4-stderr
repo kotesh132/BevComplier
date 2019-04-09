@@ -1,0 +1,4 @@
+Line:5: 'a' is incompatible with 'b'
+Line:4: 'int<8>' is incompatible with '8w0'
+Line:5: 'a' is incompatible with 'b'
+Line:5:  Indeterminate Assignment Statement: a = a - b;

@@ -1,0 +1,20 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/issue272.p4",
+            "expectedData": ["Line:44: Header boolfield cannot have type bool."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/twovarbit.p4",
+            "expectedData": ["Line:3: Multiple varbit fields in a header."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/header3.p4",
+            "expectedData": ["Line:4: Tuples are not allowed in header."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/header2_e.p4",
+            "expectedData": ["Line:6: No struct fields are allowed in headers."]
+        }
+    ]
+}

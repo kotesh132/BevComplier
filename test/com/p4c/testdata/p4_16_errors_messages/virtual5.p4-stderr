@@ -1,0 +1,17 @@
+line 3: col 4:  mismatched input 'abstract' expecting '}'
+line 3: col 21:  extraneous input 'f' expecting '('
+line 3: col 23:  mismatched input 'in' expecting ')'
+line 3: col 34:  missing '(' at 'ix'
+line 3: col 37:  no viable alternative at input ';'
+line 4: col 0:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}
+line 7: col 19:  mismatched input '=' expecting ';'
+line 8: col 17:  mismatched input '(' expecting ';'
+line 8: col 31:  mismatched input ')' expecting ';'
+line 10: col 8:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}
+line 11: col 16:  extraneous input 'g' expecting '('
+line 11: col 20:  no viable alternative at input '{'
+line 11: col 32:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}
+line 15: col 10:  mismatched input '=' expecting '('
+line 15: col 16:  missing '(' at '.'
+line 15: col 21:  extraneous input ';' expecting {'<<', '&&', '||', '==', '!=', '>=', '<=', '++', ',', '(', ')', '[', '.', '<', '>', '-', '+', '*', '/', '%', '&', '|', '^', '?'}
+line 16: col 4:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}

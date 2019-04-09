@@ -1,0 +1,10 @@
+Line:18: Expression a[2] can't be evaluated at compile time. c is not a compile time constant
+Line:21: Expression e & f can't be evaluated at compile time. f is not a compile time constant
+Line:22: Expression g == h can't be evaluated at compile time. d is not a compile time constant
+Line:24: Expression d < d can't be evaluated at compile time. d is not a compile time constant
+Line:25: 'a' is incompatible with 'c'
+Line:18: Array index access not permitted on base type: IntSizeType
+Line:18: 'c' is incompatible with 'a[2]'
+Line:19: 'c' is incompatible with 'stack[d]'
+Line:25: 'a' is incompatible with 'c'
+Line:25:  Indeterminate Assignment Statement: d = a > c;

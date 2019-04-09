@@ -1,0 +1,29 @@
+actions_include()::=<<
+#include "actions.h"
+#include "headers.h"
+#include "primitives.h"
+>>
+
+actions_staticP4Actions()::=<<
+static void mark_to_drop(){
+
+}
+>>
+
+actions_action(actionControlName, actionParams, actionBody, redirectActionBody)::=<<
+
+void <actionControlName>(<actionParams>){
+<actionBody>
+}
+
+void <actionControlName>_action(uint8_t* data)
+{
+<redirectActionBody>
+}
+
+>>
+
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

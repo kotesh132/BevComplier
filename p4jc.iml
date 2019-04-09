@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/lib/manual/antlr-4.5-complete.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/manual/jgraphx.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../p4common/lib/hamcrest-all-1.3.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../p4common/lib/jackson-core-asl-1.7.3.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../p4common/lib/jackson-mapper-asl-1.7.3.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../p4common/lib/jcommander-1.29.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../p4common/lib/lombok-1.16.6.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/../p4common/lib/slf4j-api-1.6.1.jar!/" />
+    <src_description expected_position="1">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
+      <src_folder value="file://$MODULE_DIR$/packetgen" expected_position="1" />
+      <src_folder value="file://$MODULE_DIR$/instgen" expected_position="2" />
+      <src_folder value="file://$MODULE_DIR$/target" expected_position="4" />
+      <src_folder value="file://$MODULE_DIR$/grammar" expected_position="5" />
+      <src_folder value="file://$MODULE_DIR$/utils" expected_position="6" />
+      <src_folder value="file://$MODULE_DIR$/templates" expected_position="7" />
+      <src_folder value="file://$MODULE_DIR$/tools" expected_position="8" />
+      <src_folder value="file://$MODULE_DIR$/lib" expected_position="9" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packetgen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/grammar" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/utils" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/templates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tools" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/exp" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/classes" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="antlr-4.5-complete.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/manual/antlr-4.5-complete.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jgraphx.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/manual/jgraphx.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="p4common" />
+    <orderEntry type="module-library">
+      <library name="hamcrest-all-1.3.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/hamcrest-all-1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jackson-core-asl-1.7.3.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/jackson-core-asl-1.7.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jackson-mapper-asl-1.7.3.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/jackson-mapper-asl-1.7.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jcommander-1.29.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/jcommander-1.29.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="lombok-1.16.6.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/lombok-1.16.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="slf4j-api-1.6.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/slf4j-api-1.6.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="com.microsoft.z3.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/manual/com.microsoft.z3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="JUnit4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/junit-4.12.jar!/" />
+          <root url="jar://$MODULE_DIR$/../p4common/lib/hamcrest-all-1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-io-2.5.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/commons-io-2.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="cplex.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/cplex.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="logback-classic-1.0.13.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/logback-classic-1.0.13.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="logback-core-1.0.13.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/logback-core-1.0.13.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/freemarker-2.3.23.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/protobuf-java-3.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/protobuf-java-util-3.2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../p4common/lib/gson-2.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

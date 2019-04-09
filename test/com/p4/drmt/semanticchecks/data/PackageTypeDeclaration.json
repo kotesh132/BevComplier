@@ -1,0 +1,12 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/template_e.p4",
+            "expectedData": ["Line:2: Duplicates declaration."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/issue816-1.p4",
+            "expectedData": ["Line:52: parameter cannot be a package.", "Line:56: parameter cannot be a package."]
+        }
+    ]
+}

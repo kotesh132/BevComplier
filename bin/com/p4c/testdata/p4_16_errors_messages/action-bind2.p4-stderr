@@ -1,0 +1,5 @@
+Line:7: error: not enough arguments.
+Line:7: too few arguments.
+Line:8: a: not enough arguments.
+Line:8: error: a: parameter d must be bound.
+Line:6: Table does not have an 'key' property.

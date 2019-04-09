@@ -1,0 +1,11 @@
+{
+  "numKSeg": 4,
+  "numDSeg": 4,
+  "ksegWidth": 80,
+  "dsegWidth": 80,
+  "numTcamRow": 2,
+  "numTcamColumn": 8,
+  "wordsPerTcam": 16,
+  "wordsPerSram": 16,
+  "bitWidthSram": 100
+}

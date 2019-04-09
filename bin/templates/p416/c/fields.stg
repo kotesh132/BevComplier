@@ -1,0 +1,68 @@
+fields_include()::=<<
+#include \<stdint.h>
+#include \<stdlib.h>
+#include \<stdio.h>
+#include "fields.h"
+#include "utility.h"
+#include "actions.h"
+
+>>
+
+fields_table_names(tableNames)::=<<
+
+const char *table_names[] = {
+	<tableNames : {tableName | "<tableName>",<\n>}>
+};
+>>
+
+fields_tableid_control_map(controlNames)::=<<
+
+const char *tableid_control_map[] = {
+	<controlNames : {controlName | "<controlName>",<\n>}>
+};
+>>
+
+fields_controlActions(controlActionNames)::=<<
+
+const void* control_action_map[] = {
+	<controlActionNames : {controlActionName | "<controlActionName>",<\n>}>
+};
+
+const void* all_actions[] = {
+	<controlActionNames : {controlActionName | <controlActionName>_action,<\n>}>
+};
+>>
+
+fields_helperMethods()::=<<
+
+int get_table_id(const char *table_name) {
+	int i;
+	int n = ARRAY_SIZE(table_names);
+	for(i = 0; i\< n; i++ )
+		if(isEqual(table_name, table_names[i]))
+			return i;
+	return -1;
+}
+
+const char* get_control_name(const char *table_name){
+	uint8_t table_id = get_table_id(table_name);
+	return tableid_control_map[table_id];
+}
+
+int get_action_id(const char *action_name) {
+	int i;
+	int n = ARRAY_SIZE(control_action_map);
+	for(i = 0; i\< n; i++ )
+		if(isEqual(action_name, control_action_map[i]))
+			return i;
+	return -1;
+}
+
+int get_tables_count(){
+	return ARRAY_SIZE(table_names);
+}
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

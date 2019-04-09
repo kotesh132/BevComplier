@@ -1,0 +1,28 @@
+{
+	"dataSet": [
+		{
+			"inputData": "const bit temp3 = false;",
+			"inputFile": null,
+			"valid": false,
+			"expectedData": ["bit temp3"],
+			"expectedDataFile": null,
+			"lineNumberList": ["1"]
+		},
+		{
+			"inputData": null,
+			"inputFile": "test/com/p4/drmt/semanticchecks/data/actiondeclaration.p4",
+			"valid": false,
+			"expectedData": null,
+			"expectedDataFile": "/some/apth",
+			"lineNumberList": ["1","3"]
+		},
+		{
+			"inputData": null,
+			"inputFile": "/some/path",
+			"valid": false,
+			"expectedData": ["exp1","exp2"],
+			"expectedDataFile": null,
+			"lineNumberList": ["1","3"]
+		}
+	]
+}

@@ -1,0 +1,10 @@
+Line:77: No struct fields are allowed in headers.
+Line:78: No struct fields are allowed in headers.
+Line:72: Field x7 of header H can't be of type: ErrorType
+Line:73: Field x8 of header H can't be of type: BoolType
+Line:74: Field x9 of header H can't be of type: enum
+Line:75: Field x10 of header H can't be of type: header
+Line:76: Field x11 of header H can't be of type: header
+Line:77: Field x12 of header H can't be of type: struct
+Line:78: Field x13 of header H can't be of type: struct
+Line:79: Field x14 of header H can't be of type: [BitSizeType, BitSizeType]

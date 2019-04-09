@@ -1,0 +1,2 @@
+Line:5: 'tuple<bit<32>>' is incompatible with '{ 0 }'
+Line:8: 'h' is incompatible with 't'

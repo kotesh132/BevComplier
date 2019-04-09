@@ -1,0 +1,5 @@
+Line:12: 'h_t' is incompatible with '{ 0 }'
+Line:13: 'h' can not be cast to 'h_t'
+Line:13:  Indeterminate Assignment Statement: h_t h2 = (h_t) h;
+Line:14: '{ h.f }' can not be cast to 'h_t'
+Line:14:  Indeterminate Assignment Statement: h_t h4 = (h_t) { h.f };

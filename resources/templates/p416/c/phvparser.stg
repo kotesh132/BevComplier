@@ -1,0 +1,40 @@
+phvparser_include()::=<<
+#include \<stdio.h>
+#include \<stdlib.h>
+#include "headers.h"
+#include "primitives.h"
+
+>>
+
+phvparser_parsePacketVector(objName, params, lines)::=<<
+void <objName>(<params>){
+
+	<lines : {line | <line>;<\n>}>
+}
+
+>>
+
+phvparser_parseHeader(objName, methodSignature, validLine, lines)::=<<
+<methodSignature>{
+
+	<validLine>;
+
+	if (<objName>->isValid) {
+		<lines : {line | <line>;<\n>}>
+	}
+}
+
+>>
+
+phvparser_parseStruct(objName, methodSignature, lines)::=<<
+<methodSignature>{
+
+	<lines : {line | <line>;<\n>}>
+}
+
+>>
+
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

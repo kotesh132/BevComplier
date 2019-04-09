@@ -1,0 +1,37 @@
+{
+  "_condition_0,_condition_1": {
+    "condition": "False",
+    "delay": 0,
+    "dep_type": "rmt_successor"
+  },
+  "_condition_0,ipv4_da_lpm_ACTION": {
+    "condition": "True",
+    "delay": 0,
+    "dep_type": "rmt_successor"
+  },
+  "_condition_1,ipv6_da_exact_ACTION": {
+    "condition": "True",
+    "delay": 0,
+    "dep_type": "rmt_successor"
+  },
+  "ipv4_da_lpm_ACTION,mac_da_MATCH": {
+    "delay": 1,
+    "dep_type": "rmt_match"
+  },
+  "ipv4_da_lpm_MATCH,ipv4_da_lpm_ACTION": {
+    "delay": 9,
+    "dep_type": "new_match_to_action"
+  },
+  "ipv6_da_exact_ACTION,mac_da_MATCH": {
+    "delay": 1,
+    "dep_type": "rmt_match"
+  },
+  "ipv6_da_exact_MATCH,ipv6_da_exact_ACTION": {
+    "delay": 9,
+    "dep_type": "new_match_to_action"
+  },
+  "mac_da_MATCH,mac_da_ACTION": {
+    "delay": 9,
+    "dep_type": "new_match_to_action"
+  }
+}

@@ -1,0 +1,62 @@
+
+        Aligning Memory Allocation in sw/p4jc
+
+1) Prior to changelist 9940 memory allocation was done in 2 ways.
+  a) The struct and header fields were assigned a 
+     memory address starting from start of structure begining.
+     These were relative byte addresses  from the begining of
+     the struct/header. These allocation were done using the 
+     setByteoffset API and the address relative to struct 
+     begining were obtained using getByteOffset.
+
+     The above addresss had no padding and they weren't aligned.
+     
+     So two new APIs were introducted setAlignedByteOffset(AtomicInteger)
+     and getAlignedByteOffset() to align the particular field.
+     To perform this a new member variable alignedByteOffset was introducted
+     whereever appropriate similar to byteOffset member variable.
+
+     The alignment is done by a method called alignMem available to all sub-classes
+     of AbstractBaseExt.
+
+     int alignMem (int currentOffset, int symbolSize) returns the increment by 
+     which the currentOffset needs to "incremented/added" so that the symbol is aligned.
+     It is based on the following conditions
+
+        (1) SymbolSize == 1 , currentOffset is not changed, increment is 0.
+
+        (2) SymbolSize == 2 , currentOffset is changed if it is odd 
+
+            (currentOffset%2) =  {  
+                                    1,  inc=1
+                                    0,  inc=0
+                                 }
+
+        (3) SymbolSize >= 3,
+
+            (currentOffset%4) =  {  
+                                    1,  inc=3
+                                    2,  inc=2
+                                    3,  inc=1
+                                    0,  inc=0;
+                                 }
+       
+         
+     The increment obtained from alignMem is added to the currentOffset to obtain the 
+     aligned Address. 
+
+
+b) The size of the symbol doesn't change if it is a terminal symbol. The size of aggregates
+    changed after aligning (due to padding). For Header/Struct and aggregate types the size
+    after member alignment including padding is given by API getAlignedSizeInBytes().
+
+
+c) There is another allocation done directly by the MemoryManager.java alloc function. The Memory 
+   Buffer  maintains a marker (pointer) that aligns and increments the marker depending on the
+   type of allocation. In particular top level global instantiations are done using this method.
+   
+   When you request for a allocation of instantiations like hdr(),meta() in sequence
+   all the alignedbyteOffset for structFields are allocated and alignedSizeinBytes member variable
+   is also set. So the Hdr variable is incremented by alignedSizeinBytes instead of sizeinBytes
+   this fixing the overlapping offsets .
+

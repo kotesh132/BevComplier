@@ -1,0 +1,2 @@
+Line:15: 'U' is incompatible with '{ { 10 }, { 20 } }'
+Line:16: 'u.setValid' can not be resolved 

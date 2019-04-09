@@ -1,0 +1,14 @@
+SOM-0, TCAM row:0 col: 0, assigned to table : {2}, key segment : 0
+SOM-0, TCAM row:0 col: 1, assigned to table : {1}, key segment : 1
+SOM-0, TCAM row:0 col: 2, assigned to table : {6}, key segment : 0
+SOM-0, TCAM row:0 col: 3, assigned to table : {3}, key segment : 1
+SOM-0, TCAM row:0 col: 4, assigned to table : {7}, key segment : 2
+SOM-0, TCAM row:0 col: 5, assigned to table : {4}, key segment : 3
+SOM-0, TCAM row:0 col: 6, assigned to table : {5}, key segment : 4
+SOM-0, SRAM-0 is used for data of table : {2}, rseg : 0, startAddr : 0, endAddr : 1023
+SOM-0, SRAM-1 is used for data of table : {1}, rseg : 1, startAddr : 0, endAddr : 1023
+SOM-0, SRAM-2 is used for data of table : {6}, rseg : 0, startAddr : 0, endAddr : 1023
+SOM-0, SRAM-3 is used for data of table : {3}, rseg : 1, startAddr : 0, endAddr : 1023
+SOM-0, SRAM-4 is used for data of table : {7}, rseg : 2, startAddr : 0, endAddr : 1023
+SOM-0, SRAM-5 is used for data of table : {4}, rseg : 3, startAddr : 0, endAddr : 1023
+SOM-0, SRAM-6 is used for data of table : {5}, rseg : 4, startAddr : 0, endAddr : 1023

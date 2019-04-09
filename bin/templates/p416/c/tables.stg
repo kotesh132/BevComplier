@@ -1,0 +1,109 @@
+tables_include()::=<<
+
+#include \<stdint.h>
+#include "tables.h"
+#include "headers.h"
+#include "actions.h"
+#include "pd.h"
+#include "primitives.h"
+
+>>
+
+//start0
+tables_actions_array(controlToActionsMap)::=<<
+
+<controlToActionsMap.keys : {controlName | <tables_control_actions(controlName, controlToActionsMap.(controlName))><\n>}>
+>>
+
+tables_control_actions(controlName, actions)::=<<
+
+const <controlName>_ActionFn <controlName>_actions[] = {
+    <actions : {action | <controlName>_<action>_action,<\n>}>
+};
+>>
+
+tables_all_actions(actionsOrderedById)::=<<
+
+const void* all_actions[] = {
+    <actionsOrderedById : {actionControlName | <actionControlName>_action,<\n>}>
+};
+>>
+
+//end0
+
+
+//start1
+tables_lookup_methods(tableObjects)::=<<
+
+<tableObjects : {tableObject | <tables_lookup_method(tableObject.control.nameString, tableObject.nameString)><\n>}>
+>>
+
+tables_lookup_method(controlName, tableName)::=<<
+
+static void <controlName>_<tableName>_lookup(int tableId, uint8_t* tableKey, <controlName>_action_data* <controlName>_action_data_obj){
+
+	uint8_t tableData[21] = {0};
+
+	uint8_t hit = table_look_up(tableId, tableKey, tableData);
+
+	<controlName>_action_data_obj->fn = all_actions[tableData[0]];
+	memcpy(<controlName>_action_data_obj->data, tableData+1, 20);
+	<controlName>_action_data_obj->hit = hit;
+
+}
+>>
+//end1
+
+
+//start2
+tables_match_methods(tableObjects)::=<<
+
+<tableObjects : {tableObject | <tables_match_method(tableObject.control.nameString, tableObject, tableObject.nameString, tableObject.keyElements)>}>
+>>
+
+tables_match_method(controlName, tableObject, tableName, keyElements)::=<<
+
+static void <controlName>_<tableName>_match(<controlName>_action_data* <controlName>_action_data_obj){
+
+	//Key generation
+	uint8_t tableKey[20] = {0};
+	int bitOffset = 0;
+    <keyElements: {keyElement
+    |EMIT_BITS(tableKey, (uint8_t *)&(<keyElement.keyName>), bitOffset, <keyElement.keySymbol.sizeInBits>);<\n>bitOffset = bitOffset + <keyElement.keySymbol.sizeInBits>; <\n>}>
+    //lookup
+	<controlName>_<tableObject.nameString>_lookup(<tableObject.tableId>, tableKey, <controlName>_action_data_obj);
+
+}
+>>
+//end2
+
+//start3
+tables_apply_methods(tableObjects)::=<<
+
+<tableObjects : {tableObject | <table_apply_method(tableObject.control.nameString, tableObject.nameString)><\n>}>
+>>
+
+table_apply_method(controlName, tableName)::=<<
+
+void <controlName>_<tableName>_apply(){
+
+    <controlName>_action_data <controlName>_action_data_obj;
+    //initialization
+    memset(<controlName>_action_data_obj.data, 0, sizeof(<controlName>_action_data_obj.data));
+    <controlName>_action_data_obj.hit = 0;
+    <controlName>_action_data_obj.fn = NULL;
+
+    //perform match
+	<controlName>_<tableName>_match(&<controlName>_action_data_obj);
+
+	//execute action
+	<controlName>_action_data_obj.fn(<controlName>_action_data_obj.data);
+}
+>>
+//end3
+
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>
+

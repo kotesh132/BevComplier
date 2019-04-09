@@ -1,0 +1,8 @@
+table_init(tableName)::=<<
+<tableName>_init();<\n>
+>>
+
+
+table_add(tableName, rowId, key, mask, data, actionName)::=<<
+<tableName>_add_entry(<rowId>, <key>, <mask>, <data>, "<actionName>");<\n>
+>>

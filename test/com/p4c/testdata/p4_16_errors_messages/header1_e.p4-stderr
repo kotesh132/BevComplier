@@ -1,0 +1,3 @@
+line 4: col 4:  mismatched input '_' expecting '}'
+line 4: col 12:  mismatched input ';' expecting '('
+line 5: col 0:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}

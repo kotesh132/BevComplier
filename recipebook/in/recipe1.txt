@@ -1,0 +1,24 @@
+symbols:
+hdr_ipv4_dstAddr,
+l2ptr,
+out_bd,
+dmac,
+out_intf,
+out_bd,
+smac,
+ttl
+
+table_configuration:
+table_add table:ipv4_da_lpm  action:set_l2ptr key:hdr_ipv4_dstAddr/32 => l2ptr
+table_add table:mac_da action:set_bd_dmac_intf key:l2ptr => out_bd dmac out_intf
+table_add table:send_frame action:rewrite_mac key:out_bd => smac
+ 
+input: 
+input_packets:
+(Ether()/IP(dst=hdr_ipv4_dstAddr, ttl=ttl))
+
+output:
+port = out_intf
+
+output_packets:
+(Ether(src=smac,dst=dmac)/IP(dst=hdr_ipv4_dstAddr, ttl=ttl-1))

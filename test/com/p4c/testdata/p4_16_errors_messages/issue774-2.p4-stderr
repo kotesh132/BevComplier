@@ -1,0 +1,9 @@
+line 49: col 18:  no viable alternative at input 'p.extract(_'
+line 50: col 8:  extraneous input 'transition' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}
+line 50: col 23:  mismatched input ';' expecting '('
+line 51: col 4:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}
+line 53: col 15:  missing '(' at '{'
+line 54: col 20:  extraneous input ';' expecting {'<<', '&&', '||', '==', '!=', '>=', '<=', '++', ',', '(', '}', '[', '.', '<', '>', '-', '+', '*', '/', '%', '&', '|', '^', '?'}
+line 55: col 8:  extraneous input 'transition' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}
+line 55: col 25:  mismatched input ';' expecting '('
+line 56: col 4:  extraneous input '}' expecting {<EOF>, 'action', 'bool', 'bit', 'const', 'control', 'enum', 'error', 'extern', 'header', 'header_union', 'int', 'match_kind', 'parser', 'package', 'struct', 'tuple', 'typedef', 'varbit', IDENTIFIER, '@', '.'}

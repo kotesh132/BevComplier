@@ -1,0 +1,24 @@
+Operations at cycle 0
+-------------------------
+Match at cycle [0], for table(s) [2,1]
+************************
+Operations at cycle 4
+-------------------------
+Direct Action at cycle [4], for instruction on cpu[0] t1 = hdr.ipv4.srcAddr != hdr.ipv4.dstAddr
+************************
+Operations at cycle 29
+-------------------------
+Direct Action at cycle [29], for instruction on cpu[0] t2 = hdr.ipv4.isValid && t1
+************************
+Operations at cycle 30
+-------------------------
+Action for matches at cycle [30], for table(s) [2,1]
+************************
+Operations at cycle 45
+-------------------------
+Match at cycle [45], for table(s) [6,3,7,4,5]
+************************
+Operations at cycle 75
+-------------------------
+Action for matches at cycle [75], for table(s) [6,3,7,4,5]
+************************

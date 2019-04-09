@@ -1,0 +1,4 @@
+Line:8: Arguments mismatch in caller and callee function: f();
+Line:9: Arguments mismatch in caller and callee function: f(1w1, 1w0);
+Line:10: Type Parameters mismatch in caller and callee function: f<bit>(1w0);
+Line:11: Type Parameters mismatch in caller and callee function: g<bit, bit>();

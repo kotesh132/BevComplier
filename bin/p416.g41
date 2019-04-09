@@ -1,0 +1,628 @@
+grammar P416;
+@header {
+import com.p4.p416.gen.*;
+}
+
+p4program
+locals [P4programContextExt extendedContext, P4programContextExt extendedContext]
+:	|p4program declaration
+	|p4program ';';
+
+declaration
+locals [DeclarationContextExt extendedContext, DeclarationContextExt extendedContext]
+:	constantDeclaration
+    | externDeclaration
+    | actionDeclaration
+    | parserDeclaration
+    | typeDeclaration
+    | controlDeclaration
+    | instantiation
+    | errorDeclaration
+    | matchKindDeclaration;
+
+nonTypeName
+locals [NonTypeNameContextExt extendedContext, NonTypeNameContextExt extendedContext]
+:	IDENTIFIER
+    | APPLY
+    | KEY
+    | ACTIONS
+    | STATE;
+
+name
+locals [NameContextExt extendedContext, NameContextExt extendedContext]
+:	nonTypeName
+    | IDENTIFIER
+    | ERROR;
+
+optAnnotations
+locals [OptAnnotationsContextExt extendedContext, OptAnnotationsContextExt extendedContext]
+:	annotations?;
+
+annotations
+locals [AnnotationsContextExt extendedContext, AnnotationsContextExt extendedContext]
+:	annotation+;
+
+annotation
+locals [AnnotationContextExt extendedContext, AnnotationContextExt extendedContext]
+:	'@' name							#simpleAnnotation
+    | '@' name '(' expressionList ')'	#complexAnnotation;
+
+parameterList
+locals [ParameterListContextExt extendedContext, ParameterListContextExt extendedContext]
+:	parameter (',' parameter)*;
+
+parameter
+locals [ParameterContextExt extendedContext, ParameterContextExt extendedContext]
+:	optAnnotations direction? typeRef name;
+
+direction
+locals [DirectionContextExt extendedContext, DirectionContextExt extendedContext]
+:	IN	#inDirection
+	| OUT	#outDirection
+	| INOUT	#inOutDirection;
+
+packageTypeDeclaration
+locals [PackageTypeDeclarationContextExt extendedContext, PackageTypeDeclarationContextExt extendedContext]
+:	optAnnotations PACKAGE name optTypeParameters? '(' parameterList? ')';
+
+instantiation
+locals [InstantiationContextExt extendedContext, InstantiationContextExt extendedContext]
+:	annotations? typeRef '(' argumentList? ')' name ';';
+
+optConstructorParameters
+locals [OptConstructorParametersContextExt extendedContext, OptConstructorParametersContextExt extendedContext]
+:	'(' parameterList? ')';
+
+dotPrefix
+locals [DotPrefixContextExt extendedContext, DotPrefixContextExt extendedContext]
+:	'.';
+
+/**************************** PARSER ******************************/parserDeclaration
+locals [ParserDeclarationContextExt extendedContext, ParserDeclarationContextExt extendedContext]
+:	parserTypeDeclaration optConstructorParameters? '{' parserLocalElements? parserStates '}';
+
+parserLocalElements
+locals [ParserLocalElementsContextExt extendedContext, ParserLocalElementsContextExt extendedContext]
+:	parserLocalElement+;
+
+parserLocalElement
+locals [ParserLocalElementContextExt extendedContext, ParserLocalElementContextExt extendedContext]
+:	constantDeclaration
+    | variableDeclaration
+    | instantiation;
+
+parserTypeDeclaration
+locals [ParserTypeDeclarationContextExt extendedContext, ParserTypeDeclarationContextExt extendedContext]
+:	optAnnotations PARSER name optTypeParameters? '(' parameterList? ')';
+
+parserStates
+locals [ParserStatesContextExt extendedContext, ParserStatesContextExt extendedContext]
+:	parserState+;
+
+parserState
+locals [ParserStateContextExt extendedContext, ParserStateContextExt extendedContext]
+:	optAnnotations STATE name '{' parserStatements? transitionStatement? '}';
+
+parserStatements
+locals [ParserStatementsContextExt extendedContext, ParserStatementsContextExt extendedContext]
+:	parserStatement+;
+
+parserStatement
+locals [ParserStatementContextExt extendedContext, ParserStatementContextExt extendedContext]
+:	assignmentStatement
+    | methodCallStatement
+    | directApplication
+    | parserBlockStatement
+    | constantDeclaration
+    | variableDeclaration;
+
+parserBlockStatement
+locals [ParserBlockStatementContextExt extendedContext, ParserBlockStatementContextExt extendedContext]
+:	optAnnotations '{' parserStatements '}';
+
+transitionStatement
+locals [TransitionStatementContextExt extendedContext, TransitionStatementContextExt extendedContext]
+:	TRANSITION stateExpression;
+
+stateExpression
+locals [StateExpressionContextExt extendedContext, StateExpressionContextExt extendedContext]
+:	name ';'
+    | selectExpression;
+
+selectExpression
+locals [SelectExpressionContextExt extendedContext, SelectExpressionContextExt extendedContext]
+:	SELECT '(' expressionList ')' '{' selectCaseList? '}';
+
+selectCaseList
+locals [SelectCaseListContextExt extendedContext, SelectCaseListContextExt extendedContext]
+:	selectCase+;
+
+selectCase
+locals [SelectCaseContextExt extendedContext, SelectCaseContextExt extendedContext]
+:	keySetExpression ':' name ';';
+
+keySetExpression
+locals [KeySetExpressionContextExt extendedContext, KeySetExpressionContextExt extendedContext]
+:	tupleKeySetExpression 
+  	|  simpleKeySetExpression;
+
+tupleKeySetExpression
+locals [TupleKeySetExpressionContextExt extendedContext, TupleKeySetExpressionContextExt extendedContext]
+:	'(' simpleKeySetExpression ( ',' simpleKeySetExpression )* ')';
+
+simpleKeySetExpression
+locals [SimpleKeySetExpressionContextExt extendedContext, SimpleKeySetExpressionContextExt extendedContext]
+:	expression
+    | DEFAULT
+    | DONTCARE
+    | expression MASK expression
+    | expression RANGE expression;
+
+/*************************** CONTROL ************************/controlDeclaration
+locals [ControlDeclarationContextExt extendedContext, ControlDeclarationContextExt extendedContext]
+:	controlTypeDeclaration optConstructorParameters?
+      /* no type parameters allowed in controlTypeDeclaration */
+      '{' controlLocalDeclarations? APPLY controlBody '}';
+
+controlTypeDeclaration
+locals [ControlTypeDeclarationContextExt extendedContext, ControlTypeDeclarationContextExt extendedContext]
+:	optAnnotations CONTROL name optTypeParameters?
+      '(' parameterList? ')';
+
+controlLocalDeclarations
+locals [ControlLocalDeclarationsContextExt extendedContext, ControlLocalDeclarationsContextExt extendedContext]
+:	controlLocalDeclaration+;
+
+controlLocalDeclaration
+locals [ControlLocalDeclarationContextExt extendedContext, ControlLocalDeclarationContextExt extendedContext]
+:	constantDeclaration
+    | actionDeclaration
+    | tableDeclaration
+    | instantiation
+    | variableDeclaration;
+
+controlBody
+locals [ControlBodyContextExt extendedContext, ControlBodyContextExt extendedContext]
+:	blockStatement;
+
+/*************************** EXTERN *************************/externDeclaration
+locals [ExternDeclarationContextExt extendedContext, ExternDeclarationContextExt extendedContext]
+:	optAnnotations EXTERN nonTypeName optTypeParameters? '{' methodPrototypes? '}'	#externObjectDeclaration
+    | optAnnotations EXTERN functionPrototype ';'										#externFunctionDeclaration;
+
+methodPrototypes
+locals [MethodPrototypesContextExt extendedContext, MethodPrototypesContextExt extendedContext]
+:	methodPrototype+;
+
+functionPrototype
+locals [FunctionPrototypeContextExt extendedContext, FunctionPrototypeContextExt extendedContext]
+:	typeOrVoid name optTypeParameters? '(' parameterList? ')';
+
+methodPrototype
+locals [MethodPrototypeContextExt extendedContext, MethodPrototypeContextExt extendedContext]
+:	functionPrototype ';'
+    | IDENTIFIER '(' parameterList? ')' ';';
+
+/************************** TYPES ****************************/typeRef
+locals [TypeRefContextExt extendedContext, TypeRefContextExt extendedContext]
+:	baseType
+    | typeName
+    | specializedType
+    | headerStackType
+    | tupleType;
+
+prefixedType
+locals [PrefixedTypeContextExt extendedContext, PrefixedTypeContextExt extendedContext]
+:	IDENTIFIER
+    | dotPrefix IDENTIFIER
+    | ERROR;
+
+typeName
+locals [TypeNameContextExt extendedContext, TypeNameContextExt extendedContext]
+:	prefixedType;
+
+tupleType
+locals [TupleTypeContextExt extendedContext, TupleTypeContextExt extendedContext]
+:	TUPLE '<' typeArgumentList '>';
+
+headerStackType
+locals [HeaderStackTypeContextExt extendedContext, HeaderStackTypeContextExt extendedContext]
+:	typeName '[' expression ']';
+
+specializedType
+locals [SpecializedTypeContextExt extendedContext, SpecializedTypeContextExt extendedContext]
+:	prefixedType '<' typeArgumentList '>';
+
+baseType
+locals [BaseTypeContextExt extendedContext, BaseTypeContextExt extendedContext]
+:	BOOL						#boolType
+	| ERROR						#errorType
+	| BIT						#bitType		
+	| BIT  '<'  number  '>'		#bitSizeType
+	| INT  '<'  number  '>'		#intSizeType
+	| VARBIT  '<'  number  '>'	#varBitSizeTtype;
+
+typeOrVoid
+locals [TypeOrVoidContextExt extendedContext, TypeOrVoidContextExt extendedContext]
+:	VOID
+    | typeRef
+    | nonTypeName;
+
+optTypeParameters
+locals [OptTypeParametersContextExt extendedContext, OptTypeParametersContextExt extendedContext]
+:	'<' typeParameterList '>';
+
+typeParameterList
+locals [TypeParameterListContextExt extendedContext, TypeParameterListContextExt extendedContext]
+:	nonTypeName ( ',' nonTypeName) *;
+
+typeArg
+locals [TypeArgContextExt extendedContext, TypeArgContextExt extendedContext]
+:	dontcare
+    | typeRef;
+
+dontcare
+locals [DontcareContextExt extendedContext, DontcareContextExt extendedContext]
+:	DONTCARE;
+
+typeArgumentList
+locals [TypeArgumentListContextExt extendedContext, TypeArgumentListContextExt extendedContext]
+:	typeArg (',' typeArg)*;
+
+typeDeclaration
+locals [TypeDeclarationContextExt extendedContext, TypeDeclarationContextExt extendedContext]
+:	derivedTypeDeclaration
+    | typedefDeclaration
+    | parserTypeDeclaration ';'
+    | controlTypeDeclaration ';'
+    | packageTypeDeclaration ';';
+
+derivedTypeDeclaration
+locals [DerivedTypeDeclarationContextExt extendedContext, DerivedTypeDeclarationContextExt extendedContext]
+:	headerTypeDeclaration
+    | headerUnionDeclaration
+    | structTypeDeclaration
+    | enumDeclaration;
+
+headerTypeDeclaration
+locals [HeaderTypeDeclarationContextExt extendedContext, HeaderTypeDeclarationContextExt extendedContext]
+:	optAnnotations HEADER name '{' structFieldList? '}';
+
+headerUnionDeclaration
+locals [HeaderUnionDeclarationContextExt extendedContext, HeaderUnionDeclarationContextExt extendedContext]
+:	optAnnotations HEADER_UNION name '{' structFieldList? '}';
+
+structTypeDeclaration
+locals [StructTypeDeclarationContextExt extendedContext, StructTypeDeclarationContextExt extendedContext]
+:	optAnnotations STRUCT name '{' structFieldList? '}';
+
+structFieldList
+locals [StructFieldListContextExt extendedContext, StructFieldListContextExt extendedContext]
+:	structField+;
+
+structField
+locals [StructFieldContextExt extendedContext, StructFieldContextExt extendedContext]
+:	optAnnotations typeRef name ';';
+
+enumDeclaration
+locals [EnumDeclarationContextExt extendedContext, EnumDeclarationContextExt extendedContext]
+:	optAnnotations ENUM name '{' identifierList '}';
+
+errorDeclaration
+locals [ErrorDeclarationContextExt extendedContext, ErrorDeclarationContextExt extendedContext]
+:	ERROR '{' identifierList '}';
+
+matchKindDeclaration
+locals [MatchKindDeclarationContextExt extendedContext, MatchKindDeclarationContextExt extendedContext]
+:	MATCH_KIND '{' identifierList '}';
+
+identifierList
+locals [IdentifierListContextExt extendedContext, IdentifierListContextExt extendedContext]
+:	name ( ',' name )*;
+
+typedefDeclaration
+locals [TypedefDeclarationContextExt extendedContext, TypedefDeclarationContextExt extendedContext]
+:	annotations? TYPEDEF typeRef name ';'					#simpleTypeDef
+    | annotations? TYPEDEF derivedTypeDeclaration name ';'	#derivedTypeDef;
+
+/*************************** STATEMENTS *************************/assignmentStatement
+locals [AssignmentStatementContextExt extendedContext, AssignmentStatementContextExt extendedContext]
+:	lvalue '='  expression ';';
+
+methodCallStatement
+locals [MethodCallStatementContextExt extendedContext, MethodCallStatementContextExt extendedContext]
+:	lvalue '.' APPLY '(' argumentList? ')' ';'	#applyMethodCall
+    | lvalue '.' 'extract' '(' argumentList? ')' ';'	#extractMethodCall
+    | lvalue '(' argumentList? ')' ';'								#callWithoutTypeArgs
+    | lvalue '<' typeArgumentList '>' '(' argumentList? ')' ';'		#callWithTypeArgs;
+
+emptyStatement
+locals [EmptyStatementContextExt extendedContext, EmptyStatementContextExt extendedContext]
+:	';';
+
+returnStatement
+locals [ReturnStatementContextExt extendedContext, ReturnStatementContextExt extendedContext]
+:	RETURN ';';
+
+exitStatement
+locals [ExitStatementContextExt extendedContext, ExitStatementContextExt extendedContext]
+:	EXIT ';';
+
+conditionalStatement
+locals [ConditionalStatementContextExt extendedContext, ConditionalStatementContextExt extendedContext]
+:	IF '(' expression ')' statement					#ifStatement
+    | IF '(' expression ')' statement ELSE statement	#ifElseStatement;
+
+directApplication
+locals [DirectApplicationContextExt extendedContext, DirectApplicationContextExt extendedContext]
+:	typeName '.' APPLY '(' argumentList? ')' ';';
+
+statement
+locals [StatementContextExt extendedContext, StatementContextExt extendedContext]
+:	assignmentStatement
+    | methodCallStatement
+    | directApplication
+    | conditionalStatement
+    | emptyStatement
+    | blockStatement
+    | exitStatement
+    | returnStatement
+    | switchStatement;
+
+blockStatement
+locals [BlockStatementContextExt extendedContext, BlockStatementContextExt extendedContext]
+:	optAnnotations '{' statOrDeclList? '}';
+
+statOrDeclList
+locals [StatOrDeclListContextExt extendedContext, StatOrDeclListContextExt extendedContext]
+:	statementOrDeclaration+;
+
+switchStatement
+locals [SwitchStatementContextExt extendedContext, SwitchStatementContextExt extendedContext]
+:	SWITCH '(' expression ')' '{' switchCases? '}';
+
+switchCases
+locals [SwitchCasesContextExt extendedContext, SwitchCasesContextExt extendedContext]
+:	switchCase+;
+
+switchCase
+locals [SwitchCaseContextExt extendedContext, SwitchCaseContextExt extendedContext]
+:	switchLabel ':' blockStatement?;
+
+switchLabel
+locals [SwitchLabelContextExt extendedContext, SwitchLabelContextExt extendedContext]
+:	name
+    | DEFAULT;
+
+statementOrDeclaration
+locals [StatementOrDeclarationContextExt extendedContext, StatementOrDeclarationContextExt extendedContext]
+:	variableDeclaration
+    | constantDeclaration
+    | statement
+    | instantiation;
+
+/************ TABLES *************/tableDeclaration
+locals [TableDeclarationContextExt extendedContext, TableDeclarationContextExt extendedContext]
+:	optAnnotations TABLE name '{' tablePropertyList '}';
+
+tablePropertyList
+locals [TablePropertyListContextExt extendedContext, TablePropertyListContextExt extendedContext]
+:	tableProperty+;
+
+tableProperty
+locals [TablePropertyContextExt extendedContext, TablePropertyContextExt extendedContext]
+:	KEY  '='  '{'  keyElementList?  '}' 						#key
+	| ACTIONS  '='  '{'  actionList  '}'						#actions
+	| CONST ENTRIES '=' '{' entriesList '}'						#constEntries
+	| optAnnotations  CONST  IDENTIFIER  '='  initializer  ';'	#localVariable
+	| optAnnotations  IDENTIFIER  '='  initializer  ';'			#localConstVariable;
+
+keyElementList
+locals [KeyElementListContextExt extendedContext, KeyElementListContextExt extendedContext]
+:	keyElement+;
+
+keyElement
+locals [KeyElementContextExt extendedContext, KeyElementContextExt extendedContext]
+:	expression ':' name optAnnotations ';';
+
+actionList
+locals [ActionListContextExt extendedContext, ActionListContextExt extendedContext]
+:	actionRef ';' (actionRef  ';' )*;
+
+entriesList
+locals [EntriesListContextExt extendedContext, EntriesListContextExt extendedContext]
+:	entry+;
+
+entry
+locals [EntryContextExt extendedContext, EntryContextExt extendedContext]
+:	optAnnotations keySetExpression ':' actionRef ';';
+
+actionRef
+locals [ActionRefContextExt extendedContext, ActionRefContextExt extendedContext]
+:	optAnnotations name							#actionWithoutArgs
+    | optAnnotations name '(' argumentList? ')'		#actionWithArgs;
+
+/************************* ACTION ********************************/actionDeclaration
+locals [ActionDeclarationContextExt extendedContext, ActionDeclarationContextExt extendedContext]
+:	optAnnotations ACTION name '(' parameterList? ')' blockStatement;
+
+/************************* VARIABLES *****************************/variableDeclaration
+locals [VariableDeclarationContextExt extendedContext, VariableDeclarationContextExt extendedContext]
+:	annotations? typeRef name optInitializer? ';';
+
+constantDeclaration
+locals [ConstantDeclarationContextExt extendedContext, ConstantDeclarationContextExt extendedContext]
+:	optAnnotations CONST typeRef name '=' initializer ';';
+
+optInitializer
+locals [OptInitializerContextExt extendedContext, OptInitializerContextExt extendedContext]
+:	'=' initializer;
+
+initializer
+locals [InitializerContextExt extendedContext, InitializerContextExt extendedContext]
+:	expression;
+
+/************************* Expressions ****************************/argumentList
+locals [ArgumentListContextExt extendedContext, ArgumentListContextExt extendedContext]
+:	argument (',' argument)*;
+
+argument
+locals [ArgumentContextExt extendedContext, ArgumentContextExt extendedContext]
+:	expression;
+
+expressionList
+locals [ExpressionListContextExt extendedContext, ExpressionListContextExt extendedContext]
+:	expression (',' expression)*;
+
+member
+locals [MemberContextExt extendedContext, MemberContextExt extendedContext]
+:	name;
+
+prefixedNonTypeName
+locals [PrefixedNonTypeNameContextExt extendedContext, PrefixedNonTypeNameContextExt extendedContext]
+:	nonTypeName
+    | dotPrefix nonTypeName;
+
+lvalue
+locals [LvalueContextExt extendedContext, LvalueContextExt extendedContext]
+:	prefixedNonTypeName						#prefixedNonTypeNameLvalue
+    | lvalue '.' member							#prefixedNameLvalue
+    | lvalue '[' expression ']'					#arrayIndexLvalue
+    | lvalue '[' expression ':' expression ']'	#rangeIndexLvalue;
+
+expression
+locals [ExpressionContextExt extendedContext, ExpressionContextExt extendedContext]
+:	number											#integer
+    | TRUE												#true
+    | FALSE												#false
+    | STRING_LITERAL									#string
+    | nonTypeName										#nonType
+    | '.' nonTypeName									#prefixedNonType
+    | expression '[' expression ']'						#arrayIndex
+    | expression '[' expression ':' expression ']'		#rangeIndex
+    | '{' expressionList '}'							#set
+    | '(' expression ')'								#of
+    | '!' expression									#not
+    | '~' expression									#negate
+    | '-' expression									#unaryMinus
+    | '+' expression									#unaryPlus
+    | typeName '.' member								#memberAccess
+    | ERROR '.' member									#errorMemberAccess
+    | expression '.' member								#exprMemberAccess
+    | expression '*' expression							#star
+    | expression '/' expression							#slah
+    | expression '%' expression							#mod
+    | expression '+' expression							#plus
+    | expression '-' expression							#minus
+    | expression SHL expression 						#shiftLeft
+    | expression '>' '>' expression						#shifRight
+    | expression '&' expression							#bitAnd
+    | expression '^' expression							#bitXor
+    | expression '|' expression							#bitOr
+    | expression PP expression							#plusPlus
+    | expression LE expression							#lessThanOrEqual
+    | expression GE expression							#greaterThanOrEqual
+    | expression '<' expression							#lessThan
+    | expression '>' expression							#greaterThan
+    | expression NE expression							#notEqual
+    | expression EQ expression							#equal
+    | expression AND expression							#and
+    | expression OR expression							#or
+    | expression '?' expression ':' expression			#ternary
+    | expression '<' typeArgumentList '>' '(' argumentList? ')' #templetizedFunctionCall
+    | expression '(' argumentList? ')'					#functionCall
+    | typeRef '(' argumentList? ')'						#constructor
+    | '(' typeRef ')' expression						#cast;
+
+number
+locals [NumberContextExt extendedContext, NumberContextExt extendedContext]
+:	decimalNumber
+| octalNumber
+| binaryNumber
+| hexNumber
+| realNumber;
+
+decimalNumber
+locals [DecimalNumberContextExt extendedContext, DecimalNumberContextExt extendedContext]
+:	Decimal_number;
+
+octalNumber
+locals [OctalNumberContextExt extendedContext, OctalNumberContextExt extendedContext]
+:	Octal_number;
+
+binaryNumber
+locals [BinaryNumberContextExt extendedContext, BinaryNumberContextExt extendedContext]
+:	Binary_number;
+
+hexNumber
+locals [HexNumberContextExt extendedContext, HexNumberContextExt extendedContext]
+:	Hex_number;
+
+realNumber
+locals [RealNumberContextExt extendedContext, RealNumberContextExt extendedContext]
+:	Real_number;
+
+Hex_number : '0'[xX][0-9a-fA-F_]+ | [0-9]+[ws]'0'[xX][0-9a-fA-F_]+;
+Decimal_number : '0'[dD][0-9_]+ | [0-9]+[ws]'0'[dD][0-9_]+;
+Octal_number : '0'[oO][0-7_]+ | [0-9]+[ws]'0'[oO][0-7_]+;
+Binary_number : '0'[bB][01_]+ | [0-9]+[ws]'0'[bB][01_]+;
+Real_number : [0-9][0-9_]* | [0-9]+[ws][0-9_]+ ;
+COMMENT
+:   ('//' ~('\n'|'\r')* '\r'? '\n' 
+        |   '/*' .*? '*/' )-> channel(HIDDEN)
+;
+WS  :   [ \t\n\r]+ -> channel(HIDDEN)
+    ;
+ABSTRACT : 'abstract';
+ACTION : 'action';
+ACTIONS : 'actions';
+ENTRIES : 'entries';
+APPLY : 'apply';
+BOOL : 'bool';
+BIT : 'bit';
+CONST : 'const';
+CONTROL : 'control';
+DEFAULT : 'default';
+ELSE : 'else';
+ENUM : 'enum';
+ERROR : 'error' ;
+EXIT : 'exit';
+EXTERN : 'extern';
+FALSE : 'false';
+HEADER : 'header';
+HEADER_UNION : 'header_union';
+IF : 'if';
+IN : 'in';
+INOUT : 'inout';
+INT : 'int';
+KEY : 'key';
+MATCH_KIND : 'match_kind';
+OUT : 'out';
+PARSER : 'parser';
+PACKAGE : 'package';
+RETURN : 'return';
+SELECT : 'select';
+STATE : 'state';
+STRUCT : 'struct';
+SWITCH : 'switch';
+TABLE : 'table';
+THIS : 'this';
+TRANSITION : 'transition';
+TRUE : 'true';
+TUPLE : 'tuple';
+TYPEDEF : 'typedef';
+VARBIT : 'varbit';
+VOID : 'void';
+DONTCARE : '_';
+IDENTIFIER : [A-Za-z_][A-Za-z0-9_]*;
+MASK : '&&&' ;
+RANGE : '..';
+SHL : '<<';
+AND : '&&' ;
+OR : '||';
+EQ : '==';
+NE : '!=';
+GE : '>=';
+LE : '<=';
+PP : '++';
+STRING_LITERAL : '"' ( ~[\n\r"] )* '"' ;

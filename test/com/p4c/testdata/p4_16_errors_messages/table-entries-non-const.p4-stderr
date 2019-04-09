@@ -1,0 +1,7 @@
+line 235: col 8:  extraneous input 'entries' expecting {'actions', 'const', 'key', IDENTIFIER, '@', '}'}
+line 236: col 53:  missing '=' at '('
+line 237: col 12:  extraneous input '0x1181' expecting {'actions', 'const', 'key', IDENTIFIER, '@', '}'}
+line 237: col 53:  missing '=' at '('
+line 238: col 12:  extraneous input '0x1181' expecting {'actions', 'const', 'key', IDENTIFIER, '@', '}'}
+line 238: col 53:  missing '=' at '('
+line 241: col 4:  extraneous input '}' expecting {'action', 'apply', 'bool', 'bit', 'const', 'error', 'int', 'table', 'tuple', 'varbit', IDENTIFIER, '@', '.'}

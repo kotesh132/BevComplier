@@ -1,0 +1,102 @@
+===============
+Parameters
+===============
+NUMADDR = 256
+NUMDOFF = 4
+WIDTH   = 2048
+NUMFLAG = 8
+
+===============
+Configuration
+===============
+TCAM State is represented as
+{kvld, mask, data}
+
+SRAM State
+{done, next, shft, doff, dvld, flag}
+
+A Row config
+R[<Row Idx>] <TCAM State>, <SRAM State>
+R[<Row Idx>] {kvld, mask, data} {done, next, shft, doff, dvld, flag}
+
+State of a packet is represented as:
+P[<Pkt Idx>] {pvld, done, perr, curr, didx, doff, dvld, flag, data}
+
+===============
+Key Gen
+===============
+Key is formed based on:
+{flag, curr, (
+              for all i:
+                if dvld[i]:
+                  data[didx + doff[i]]
+                else:
+                  0
+              )
+}
+  where, i can range from NUMDOFF to 0
+
+===============
+First Lookup
+===============
+
+Initial State of the packet:
+P[0]  {1, 0, 0, 0xFF, 0, [0,0,0,0], [0,0,0,0], 0, udin}
+
+Where,
+  udin is input packet.
+
+So, the initial key will be
+{0, 0, [0,0,0,0]}
+
+Row Config:
+[0] {1, {0, 0, [0,0,0,0]}, {0, 0xFF, [0,0,0,0]}}  {0, 0, 0, [0,0,12,13], [0,0,1,1], 0}     //TELL TO EXTRACT etherType
+
+===============
+Ethernet
+===============
+Current packet state
+P[0]  {1, 0, 0, 0, 0, [0,0,12,13], [0,0,1,1], 0, udin}
+
+Current Key:
+{0, 0, [0, 0, hdr.ethernet.etherType]}
+
+Row Config:
+[1] {1, {0, 0, [0,0,0,0]}, {0, 0, [0,0, 16w0x0800]}}  {0, 1, 14, [7,6,0,9], [1,1,1,1], 0}
+[2] {1, {0, 0, [0,0,0,0]}, {0, 0, [0,0, 16w0x86dd]}}  {0, 2, 14, [0,0,0,6], [0,0,0,1], 0}
+
+===============
+ipv4
+===============
+Current packet state
+P[0]  {1, 0, 0, 1, 14, [6,7,9,0], [1,1,1,1], 0, udin}
+
+Current Key:
+{0, 1, [hdr.ipv4.fragOffset, hdr.ipv4.ihl, hdr.ipv4.protocol]}
+
+Row Config:
+[3] {1, {0, 0, [0, 0x07, 0xf0, 0]}, {0, 1, [8w0x0, 8w0x0, 8w0x5, 8w0x06]}}  {1, 3, 20, [0,0,0,0], [0,0,0,0], 0}
+[4] {1, {0, 0, [0, 0x07, 0xf0, 0]}, {0, 1, [8w0x0, 8w0x0, 8w0x5, 8w0x11]}}  {1, 4, 20, [0,0,0,0], [0,0,0,0], 0}
+[5] {1, {0, 0, [0xff,0xff,0xff,0xff]}, {0, 1, [0,0,0,0]}} {1, 255, 20, [0,0,0,0], [0,0,0,0], 0}             //Extraction set to last line.
+
+Without the row 5, we will end up with parse exception.
+
+===============
+ipv6
+===============
+Current packet state
+P[0]  {1, 0, 0, 2, 14, [0,0,0,6], [0,0,0,1], 0, udin}
+
+Current Key:
+{0, 2, [0,0,0, hdr.ipv6.nextHdr]}
+
+Row Config:
+[6] {1, {0, 0, [0,0,0,0]}, {0, 2, [0,0,0,8w06]}}  {1, 3, 40, [0,0,0,0], [0,0,0,0], 0}
+[7] {1, {0, 0, [0,0,0,0]}, {0, 2, [0,0,0,8w17]}}  {1, 4, 40, [0,0,0,0], [0,0,0,0], 0}
+[8] {1, {0, 0, [0xff,0xff,0xff,0xff]}, {0, 2, [0,0,0,0]}} {1, 255, 20, [0,0,0,0], [0,0,0,0], 0}             //Extraction set to last line.
+
+
+===============
+tcp or udp
+===============
+The example does not need a row state for tcp or udp packet. It will need extraction information for them.

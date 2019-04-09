@@ -1,0 +1,16 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/functors2_e.p4",
+            "expectedData": ["Line:6: Cannot refer to control inside itself"]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/stack3.p4",
+            "expectedData": ["Line:54: Size of header stack type should be a constant.","Line:55: Size of header stack type should be a constant."]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/not_bound.p4",
+            "expectedData": ["Line:208: Parameter port must be bound."]
+        }
+    ]
+}

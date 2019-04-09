@@ -1,0 +1,11 @@
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Not possible to calculate size of ExternsexternIf<T>{Tid(inTd);}
+Line:7: Extern definition expects typed params. But the control type arguments aren't typed: If x
+Line:12: Extern definition and control type arguments argument count mismatch: If<int<32>, int<32>> x
+Line:22: Header type based declaration can't be typed: h<bit>

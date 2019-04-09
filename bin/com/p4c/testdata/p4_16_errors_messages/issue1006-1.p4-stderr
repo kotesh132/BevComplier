@@ -1,0 +1,1 @@
+Line:13: Cannot unify BitSizeType:16 to BitSizeType:8 in the call: R<bit<8>>(16w1) reg2;

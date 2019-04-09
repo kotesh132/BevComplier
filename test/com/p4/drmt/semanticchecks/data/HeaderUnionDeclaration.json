@@ -1,0 +1,8 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/header2_e.p4",
+            "expectedData": ["Line:18: No Struct field allowed in header_union.", "Line:19: No non-header field allowed in header_union."]
+        }
+    ]
+}

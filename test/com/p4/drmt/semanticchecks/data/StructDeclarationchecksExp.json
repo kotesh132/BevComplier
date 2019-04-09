@@ -1,0 +1,8 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/functors3_e.p4",
+            "expectedData": ["Line:4: cannot allocate objects of type struct.s"]
+        }
+    ]
+}

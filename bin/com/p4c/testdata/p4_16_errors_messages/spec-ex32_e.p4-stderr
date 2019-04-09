@@ -1,0 +1,3 @@
+Line:5: Multiple varbit fields in a header.
+Line:8: Multiple varbit fields in a header.
+Line:8: 'size2' can not be resolved. It is declared/defined after usage

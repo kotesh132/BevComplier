@@ -1,0 +1,2 @@
+Line:2: Invalid Width: For input string: "12301923123132"
+Line:2: 'bit<12301923123132>' is incompatible with '0'

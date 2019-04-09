@@ -1,0 +1,64 @@
+ExtendedContextClassSkel(className,extendedClassname,ruleName,packageName,imports,interfaceNames)::=<<
+
+package <packageName>;
+
+<imports:{import |
+<\n>import <import>;}>
+
+public class <className>ContextExt extends <extendedClassname>ContextExt <if(interfaceNames)> implements <interfaceNames> <endif>{
+
+	@Getter private <className>Context ctx;
+	
+	public <className>ContextExt(<className>Context ctx) {
+		this.ctx = ctx;
+		
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public  <className>Context getContext(){
+		return (<className>Context)contexts.get(contexts.size()-1);
+	}
+	
+	@Override
+	public <className>Context getContext(String str){
+		return (<className>Context)new PopulateExtendedContextVisitor().visit(getParser(str).<ruleName>());
+	}
+	
+	@Override
+	public void setContext(ParserRuleContext ctx){
+		if(ctx != null){
+			if(ctx instanceof <className>Context){
+				contexts.add(ctx);
+				((<className>Context) ctx).extendedContext.contexts = contexts;;
+			} else {
+				throw new ClassCastException(ctx.getClass().getSimpleName() + " cannot be casted to "+ <className>Context.class.getName());
+			}
+		} else {
+			addToContexts(null);
+		}
+	}
+}
+>>
+
+AbstractExtendedContextClassSkel(className,extendedClassname,packageName,imports,interfaceNames)::=<<
+
+package <packageName>;
+
+<imports:{import |
+<\n>import <import>;}>
+
+public class <className>ContextExt <if(extendedClassname)> extends <extendedClassname>ContextExt <endif>  <if(interfaceNames)> implements <interfaceNames> <endif>{
+
+	
+	@Override
+	public abstract \<T extends ParserRuleContext> T  getContext();
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public abstract \<T extends ParserRuleContext> T  getContext(String str);
+	
+	@Override
+	public \<T extends ParserRuleContext>void setContext(T ctx)
+}
+>>

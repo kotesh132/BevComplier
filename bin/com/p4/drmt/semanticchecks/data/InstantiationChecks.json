@@ -1,0 +1,12 @@
+{  
+    "dataSet":[  
+        {  
+            "inputFile":"test/com/p4/drmt/semanticchecks/data/instantiation.p4",
+            "expectedData": ["Line:4: Instantiations not allowed in apply::c() c_inst;"]
+        },
+        {  
+            "inputFile":"test/com/p4c/testdata/p4_16_errors/issue803-1.p4",
+            "expectedData": ["Line:54: Passing 1 arguments when 0 expected."]
+        }
+    ]
+}

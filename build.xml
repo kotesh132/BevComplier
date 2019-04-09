@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="p4jc" default="build" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<import file="../p4common/build.xml" />
+	<property name="toolname" value="p4jc" />
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+    	<classpath>
+      		<pathelement location="../p4common/ant/contrib/ant-contrib-1.0b3.jar" />
+    	</classpath>
+  	</taskdef>
+
+  	<target name="load-props" description="loading properties from parsers.properties files">
+    	<loadproperties srcfile="cfg/p4jc.properties" />
+  	</target>
+
+	<target name="init-tool" depends="load-props">
+    	<mkdir dir="${class.dir}" />
+    	<mkdir dir="${dist.dir}" />
+    	<mkdir dir="${target.dir}" />
+	</target>
+
+  	<target name="build-common" depends="load-props" description="building common directory">
+    	<ant dir="${common.dir}" inheritAll="false">
+      		<propertyset>
+        		<propertyref prefix="arg" />
+      		</propertyset>
+    	</ant>
+	</target>
+
+ 	<target name="resolve-classpath" depends="resolve-common-full-classpath,load-props" description="setting classpath for p4jc project">
+    	<fileset id="libs.classpath.fileset" dir="${lib.dir}">
+      		<patternset includes="**/*.jar" />
+    	</fileset>
+    	<path id="lib.classpath">
+      		<fileset refid="libs.classpath.fileset" />
+    	</path>
+		<path id="dirs.classpath">
+            <pathelement location="${class.dir}" />
+        </path>
+    
+    	<path id="full.classpath">
+      		<path refid="dirs.classpath" />
+      		<path refid="lib.classpath" />
+    		<path refid="common.full.classpath" />
+    	</path>
+ 		
+    	<path id="junit.classpath">
+    		<path refid="dirs.classpath"/>
+    	  	<path refid="lib.classpath"/>
+    		<path refid="common.full.classpath"/>
+    		<pathelement location="${class.dir}"/>
+    		<pathelement location="${bin.dir}"/>
+			<pathelement location="${cfg.dir}" />
+    	</path>
+ 		
+	</target>
+
+	<target name="antlr-gen" depends="resolve-classpath" description="Generates the lexer and parser from the .g grammar file.">
+        <echo>Generating the parser  classes for p4 grammar...</echo>
+        <java jar="${lib.antlr}" fork="true" dir="${grammar.dir}">
+            <arg line="${p4GrammarFile} -listener -visitor -encoding UTF-8 -package ${p4GrammarFilesPackage} -o ../${p4TargetDir}" />
+            <classpath refid="full.classpath" />
+        </java>
+	</target>
+
+
+	<target name="compile" depends="build-common,load-props,antlr-gen" >
+
+  		<echo message="start compiling" />
+  		<echo> "classpath="${toString:full.classpath} </echo>
+    	<javac includeantruntime="false" srcdir="${src.dir}:${packetgen.dir}:${tools.dir}:${utils.dir}:${target.dir}" destdir="${class.dir}" debug="true" debuglevel="lines,vars,source" fork="true">
+      		<classpath refid="full.classpath" />
+      		<classpath>
+        		<pathelement location="${cfg.dir}" />
+      		</classpath>
+      		<compilerarg value="-Xlint" />
+    	</javac>
+
+    	<!-- copy other resources -->
+    	<copy todir="${class.dir}">
+      		<fileset dir="${src.dir}">
+        		<include name="**/*.txt" />
+        		<include name="**/*.tokens" />
+        		<include name="**/*.list" />
+        		<include name="**/*.xls*" />
+        		<include name="**/EvaluatableTerminals" />
+      			<include name="**/*.stg" />
+      			<include name="**/*.json" />
+      			<include name="**/*.vh" />
+      		</fileset>
+    		<fileset dir="${packetgen.dir}">
+    			<include name="**/*.properties" />
+    			<include name="**/*.stg" />
+    		</fileset>
+      		<fileset dir="${tools.dir}">
+        		<include name="**/*.txt" />
+        		<include name="**/*.tokens" />
+        		<include name="**/*.list" />
+        		<include name="**/*.xls*" />
+        		<include name="**/EvaluatableTerminals" />
+      		</fileset>
+      		<fileset dir="${utils.dir}">
+        		<include name="**/*.txt" />
+       	 		<include name="**/*.tokens" />
+        		<include name="**/*.list" />
+        		<include name="**/*.xls*" />
+        		<include name="**/EvaluatableTerminals" />
+      		</fileset>
+      		<fileset dir="${target.dir}">
+        		<include name="**/*.txt" />
+        		<include name="**/*.tokens" />
+        		<include name="**/*.list" />
+        		<include name="**/*.xls*" />
+        		<include name="**/EvaluatableTerminals" />
+      		</fileset>
+      		<fileset dir="${cfg.dir}">
+        		<include name="**/*" />
+      		</fileset>
+      		<fileset dir="${resources.dir}">
+        		<include name="templates/**" />
+				<include name="ilp/**" />
+      		</fileset>
+      		<fileset dir="${test.resources.dir}">
+        		<include name="tdata/*.p4" />
+      		</fileset>
+    	</copy>
+ 	</target>
+
+	<target name="build" depends="jar" />
+
+	<target name="jar" depends="clean,init-version,compile">
+    	<property name="extlibs.jar" value="${dist.dir}/extlibs.jar" />
+    	<jar jarfile="${extlibs.jar}">
+      		<zipgroupfileset refid="common.libs.fileset" />
+    		<zipgroupfileset refid="common.dist.fileset" />
+    		<zipgroupfileset refid="libs.classpath.fileset" />
+    	</jar>
+    	<jar jarfile="${dist.dir}/${jar.name}" basedir="${class.dir}" duplicate="fail" filesetmanifest="merge">
+      		<zipfileset excludes="META-INF/ assembly-descriptor.xml log*.xml *.txt LICENSE AUTHORS" casesensitive="false" src="${extlibs.jar}" />
+
+      		<manifest>
+        		<attribute name="VERSION" value="${full.version}" />
+        		<attribute name="SVN-Revision" value="${svnversion}" />
+        		<attribute name="Main-Class" value="${mainclass}" />
+      		</manifest>
+    	</jar>
+        <delete file="${extlibs.jar}" />
+        <property name="jar.path" location="${dist.dir}/${jar.name}"/>
+        <write-p4jc-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${jar.name} ${mainclass}" />
+  		<write-stepper-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${jar.name} ${stepperclass}" />
+        <write-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${jar.name} ${cgenclass}" runnername="cgen"/>
+        <write-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${jar.name} ${schedulesolverclass}" runnername="schedulesolver"/>
+		<write-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${jar.name} ${qpclass}" runnername="qpjc"/>
+	</target>
+
+	<target name="fat-jar" depends="jar">
+    	<property name="extlibs.jar" value="${dist.dir}/extlibs.jar" />
+    	<jar jarfile="${extlibs.jar}">
+    		<zipgroupfileset refid="common.libs.fileset" />
+    		<zipgroupfileset refid="common.dist.fileset" />
+    		<zipgroupfileset refid="libs.classpath.fileset" />
+    	</jar>
+    	<jar jarfile="${fatjar.name}" filesetmanifest="merge">
+      		<zipfileset excludes="META-INF/ assembly-descriptor.xml log*.xml *.txt LICENSE AUTHORS" casesensitive="false" src="${extlibs.jar}" />
+      		<zipfileset src="${dist.dir}/${jar.name}" />
+    	</jar>
+    	<delete file="${jar.name}" />
+    	<delete file="${extlibs.jar}" />
+    	<write-p4jc-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${fatjar.name} ${mainclass}" />
+		<write-stepper-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${fatjar.name} ${stepperclass}" />
+		<macrodef name="write-stepper-binary" >
+		<attribute name="cmdline" />
+		<sequential>
+			<echo file="stepper" append="false" message="@{cmdline} &quot;$@&quot;" />
+			<chmod file="stepper" perm="+x" />
+			<echo file="stepper.bat" append="false" message="@{cmdline} %*" />
+		</sequential>
+	</macrodef>
+
+		<write-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${fatjar.name} ${cgenclass}" runnername="cgen"/>
+        <write-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${fatjar.name} ${schedulesolverclass}" runnername="schedulesolver"/>
+		<write-binary cmdline="dir=`dirname $0`; java -ea -Xmx4g -cp $dir/${dist.dir}/${fatjar.name} ${qpclass}" runnername="qpjc"/>
+	</target>
+
+	<target name="clean" depends="load-props">
+    	<delete dir="${class.dir}" includeEmptyDirs="true" />
+    	<delete file="${project.name}" />
+    	<delete file="${project.name}.bat" />
+    	<delete dir="${dist.dir}" includeEmptyDirs="true" />
+	</target>
+	
+	<target name="p4c-junit" depends="compile, test-compile" description="Runs P4C's JUNIT Suite">
+		<mkdir dir="${junitrprt.dir}"/>
+		<junit printsummary="yes">
+			<jvmarg value="-Xmx6g"/>
+			<classpath>
+				<path refid="junit.classpath"/>
+			</classpath>
+			<batchtest fork="yes" todir="${junitrprt.dir}" failureproperty="hasfailingtests">
+				<fileset dir="${test.dir}">
+					<include name="**/P4CTestSuite.java"/>
+				</fileset>
+				<formatter type="xml"/>
+			</batchtest>
+		</junit>
+	</target>
+	
+	<target name="junit" depends="compile, test-compile" description="Runs JUNIT Suite">
+	    	<mkdir dir="${junitrprt.dir}"/>
+	        <junit printsummary="yes">
+	        	<jvmarg value="-Xmx6g"/>
+	        	<classpath>
+	        		<path refid="junit.classpath"/>
+	        	</classpath>     	
+	        	<batchtest fork="yes" todir="${junitrprt.dir}" failureproperty="hasfailingtests">
+	        		<fileset dir="${test.dir}">
+	        			<include name="**/*Test.java"/>
+	        			<include name="**/*TestSuite.java"/>
+	        			<exclude name="**/*TestRunner*.java"/>
+	        			<exclude name="**/P4CTestSuite.java"/>
+	        		</fileset>
+	        		<formatter type="xml"/>
+	        	</batchtest>
+	        </junit>
+	 </target>
+		
+	 <target name="test-compile" depends="resolve-classpath">
+	    	<javac includeantruntime="false" srcdir="${test.dir}" destdir="${class.dir}"
+	            debug="true" debuglevel="lines,vars,source" fork="true">
+	      		<classpath refid="full.classpath" />
+	      		<classpath>
+	        		<pathelement location="${cfg.dir}" />
+	      		</classpath>
+	      		<compilerarg value="-Xlint" />
+	        </javac>
+	        <copy todir="${classes}">
+	        	<fileset dir="test">
+	        		<include name="**/*.txt" />
+	        		<include name="**/*.tokens" />
+	        		<include name="**/*.list" />
+	        		<include name="**/*.xls*" />
+	            </fileset>
+	        </copy>
+	  </target>
+	
+	<macrodef name="write-p4jc-binary">
+    	<attribute name="cmdline" />
+    	<sequential>
+      		<echo file="p4jc" append="false" message="@{cmdline} &quot;$@&quot;" />
+      		<chmod file="p4jc" perm="+x" />
+      		<echo file="p4jc.bat" append="false" message="@{cmdline} %*" />
+    	</sequential>
+  	</macrodef>
+
+	<macrodef name="write-stepper-binary">
+    	<attribute name="cmdline" />
+    	<sequential>
+      		<echo file="stepper" append="false" message="@{cmdline} &quot;$@&quot;" />
+      		<chmod file="stepper" perm="+x" />
+      		<echo file="stepper.bat" append="false" message="@{cmdline} %*" />
+    	</sequential>
+  	</macrodef>
+
+</project>

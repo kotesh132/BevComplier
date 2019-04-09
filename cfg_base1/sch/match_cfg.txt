@@ -1,0 +1,7 @@
+At time t = 0, Match for table MATCH NODE: table2 with id 2 has predicate 
+At time t = 0, Match for table MATCH NODE: table1 with id 1 has predicate 
+At time t = 45, Match for table MATCH NODE: table6 with id 6 has predicate hdr.tcp.isValid[1,25]
+At time t = 45, Match for table MATCH NODE: table3 with id 3 has predicate t2[1,1]
+At time t = 45, Match for table MATCH NODE: table7 with id 7 has predicate hdr.udp.isValid[1,19]
+At time t = 45, Match for table MATCH NODE: table4 with id 4 has predicate hdr.ipv4.isValid[1,16]
+At time t = 45, Match for table MATCH NODE: table5 with id 5 has predicate hdr.ipv6.isValid[1,13]

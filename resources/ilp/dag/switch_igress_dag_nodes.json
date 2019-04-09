@@ -1,0 +1,898 @@
+{
+  "_condition_0": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_1": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_10": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_11": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_12": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_13": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_14": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_15": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_16": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_17": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_18": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_19": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_2": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_20": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_21": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_22": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_23": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_24": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_25": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_26": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_27": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_28": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_29": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_3": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_30": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_31": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_32": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_33": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_34": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_35": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_36": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_37": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_38": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_39": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_4": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_40": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_41": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_42": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_43": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_44": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_45": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_46": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_47": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_48": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_49": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_5": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_50": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_51": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_52": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_53": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_54": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_6": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_7": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_8": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "_condition_9": {
+    "num_fields": 0,
+    "type": "condition"
+  },
+  "acl_stats_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "adjust_lkp_fields_ACTION": {
+    "num_fields": 8,
+    "type": "action"
+  },
+  "adjust_lkp_fields_MATCH": {
+    "key_width": 2,
+    "type": "match"
+  },
+  "bd_flood_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "bd_flood_MATCH": {
+    "key_width": 19,
+    "type": "match"
+  },
+  "compute_ipv4_hashes_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "compute_ipv4_hashes_MATCH": {
+    "key_width": 1,
+    "type": "match"
+  },
+  "compute_ipv6_hashes_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "compute_ipv6_hashes_MATCH": {
+    "key_width": 1,
+    "type": "match"
+  },
+  "compute_non_ip_hashes_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "compute_non_ip_hashes_MATCH": {
+    "key_width": 1,
+    "type": "match"
+  },
+  "compute_other_hashes_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "compute_other_hashes_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "dmac_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "dmac_MATCH": {
+    "key_width": 64,
+    "type": "match"
+  },
+  "drop_stats_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ecmp_group_ACTION": {
+    "num_fields": 5,
+    "type": "action"
+  },
+  "ecmp_group_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "fabric_ingress_dst_lkp_ACTION": {
+    "num_fields": 10,
+    "type": "action"
+  },
+  "fabric_ingress_dst_lkp_MATCH": {
+    "key_width": 8,
+    "type": "match"
+  },
+  "fabric_ingress_src_lkp_ACTION": {
+    "num_fields": 0,
+    "type": "action"
+  },
+  "fabric_ingress_src_lkp_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "fabric_lag_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "fabric_lag_MATCH": {
+    "key_width": 8,
+    "type": "match"
+  },
+  "fwd_result_ACTION": {
+    "num_fields": 6,
+    "type": "action"
+  },
+  "fwd_result_MATCH": {
+    "key_width": 33,
+    "type": "match"
+  },
+  "ingress_bd_stats_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ingress_l4_dst_port_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ingress_l4_dst_port_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "ingress_l4_src_port_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ingress_l4_src_port_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "ingress_port_mapping_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ingress_port_mapping_MATCH": {
+    "key_width": 9,
+    "type": "match"
+  },
+  "ingress_port_properties_ACTION": {
+    "num_fields": 7,
+    "type": "action"
+  },
+  "ingress_port_properties_MATCH": {
+    "key_width": 9,
+    "type": "match"
+  },
+  "ingress_qos_map_dscp_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ingress_qos_map_dscp_MATCH": {
+    "key_width": 13,
+    "type": "match"
+  },
+  "ingress_qos_map_pcp_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ingress_qos_map_pcp_MATCH": {
+    "key_width": 8,
+    "type": "match"
+  },
+  "int_sink_update_outer_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "int_sink_update_outer_MATCH": {
+    "key_width": 3,
+    "type": "match"
+  },
+  "int_source_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "int_source_MATCH": {
+    "key_width": 131,
+    "type": "match"
+  },
+  "int_terminate_ACTION": {
+    "num_fields": 29,
+    "type": "action"
+  },
+  "int_terminate_MATCH": {
+    "key_width": 68,
+    "type": "match"
+  },
+  "ip_acl_ACTION": {
+    "num_fields": 10,
+    "type": "action"
+  },
+  "ip_acl_MATCH": {
+    "key_width": 136,
+    "type": "match"
+  },
+  "ipsg_ACTION": {
+    "num_fields": 0,
+    "type": "action"
+  },
+  "ipsg_MATCH": {
+    "key_width": 112,
+    "type": "match"
+  },
+  "ipsg_permit_special_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ipsg_permit_special_MATCH": {
+    "key_width": 56,
+    "type": "match"
+  },
+  "ipv4_dest_vtep_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ipv4_dest_vtep_MATCH": {
+    "key_width": 53,
+    "type": "match"
+  },
+  "ipv4_fib_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv4_fib_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "ipv4_fib_lpm_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv4_fib_lpm_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "ipv4_multicast_bridge_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ipv4_multicast_bridge_MATCH": {
+    "key_width": 80,
+    "type": "match"
+  },
+  "ipv4_multicast_bridge_star_g_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ipv4_multicast_bridge_star_g_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "ipv4_multicast_route_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "ipv4_multicast_route_MATCH": {
+    "key_width": 80,
+    "type": "match"
+  },
+  "ipv4_multicast_route_star_g_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "ipv4_multicast_route_star_g_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "ipv4_racl_ACTION": {
+    "num_fields": 8,
+    "type": "action"
+  },
+  "ipv4_racl_MATCH": {
+    "key_width": 104,
+    "type": "match"
+  },
+  "ipv4_src_vtep_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ipv4_src_vtep_MATCH": {
+    "key_width": 53,
+    "type": "match"
+  },
+  "ipv4_urpf_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv4_urpf_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "ipv4_urpf_lpm_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv4_urpf_lpm_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "ipv6_acl_ACTION": {
+    "num_fields": 10,
+    "type": "action"
+  },
+  "ipv6_acl_MATCH": {
+    "key_width": 328,
+    "type": "match"
+  },
+  "ipv6_dest_vtep_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ipv6_dest_vtep_MATCH": {
+    "key_width": 149,
+    "type": "match"
+  },
+  "ipv6_fib_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv6_fib_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "ipv6_fib_lpm_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv6_fib_lpm_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "ipv6_multicast_bridge_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ipv6_multicast_bridge_MATCH": {
+    "key_width": 272,
+    "type": "match"
+  },
+  "ipv6_multicast_bridge_star_g_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "ipv6_multicast_bridge_star_g_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "ipv6_multicast_route_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "ipv6_multicast_route_MATCH": {
+    "key_width": 272,
+    "type": "match"
+  },
+  "ipv6_multicast_route_star_g_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "ipv6_multicast_route_star_g_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "ipv6_racl_ACTION": {
+    "num_fields": 8,
+    "type": "action"
+  },
+  "ipv6_racl_MATCH": {
+    "key_width": 296,
+    "type": "match"
+  },
+  "ipv6_src_vtep_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "ipv6_src_vtep_MATCH": {
+    "key_width": 149,
+    "type": "match"
+  },
+  "ipv6_urpf_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv6_urpf_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "ipv6_urpf_lpm_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "ipv6_urpf_lpm_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "lag_group_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "lag_group_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "learn_notify_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "learn_notify_MATCH": {
+    "key_width": 20,
+    "type": "match"
+  },
+  "mac_acl_ACTION": {
+    "num_fields": 10,
+    "type": "action"
+  },
+  "mac_acl_MATCH": {
+    "key_width": 144,
+    "type": "match"
+  },
+  "meter_action_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "meter_action_MATCH": {
+    "key_width": 18,
+    "type": "match"
+  },
+  "meter_index_ACTION": {
+    "num_fields": 0,
+    "type": "action"
+  },
+  "meter_index_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "mpls_ACTION": {
+    "num_fields": 8,
+    "type": "action"
+  },
+  "mpls_MATCH": {
+    "key_width": 22,
+    "type": "match"
+  },
+  "nat_dst_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "nat_dst_MATCH": {
+    "key_width": 72,
+    "type": "match"
+  },
+  "nat_flow_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "nat_flow_MATCH": {
+    "key_width": 120,
+    "type": "match"
+  },
+  "nat_src_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "nat_src_MATCH": {
+    "key_width": 72,
+    "type": "match"
+  },
+  "nat_twice_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "nat_twice_MATCH": {
+    "key_width": 120,
+    "type": "match"
+  },
+  "native_packet_over_fabric_ACTION": {
+    "num_fields": 7,
+    "type": "action"
+  },
+  "native_packet_over_fabric_MATCH": {
+    "key_width": 2,
+    "type": "match"
+  },
+  "nexthop_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "nexthop_MATCH": {
+    "key_width": 16,
+    "type": "match"
+  },
+  "outer_ipv4_multicast_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "outer_ipv4_multicast_MATCH": {
+    "key_width": 81,
+    "type": "match"
+  },
+  "outer_ipv4_multicast_star_g_ACTION": {
+    "num_fields": 5,
+    "type": "action"
+  },
+  "outer_ipv4_multicast_star_g_MATCH": {
+    "key_width": 49,
+    "type": "match"
+  },
+  "outer_ipv6_multicast_ACTION": {
+    "num_fields": 4,
+    "type": "action"
+  },
+  "outer_ipv6_multicast_MATCH": {
+    "key_width": 273,
+    "type": "match"
+  },
+  "outer_ipv6_multicast_star_g_ACTION": {
+    "num_fields": 5,
+    "type": "action"
+  },
+  "outer_ipv6_multicast_star_g_MATCH": {
+    "key_width": 145,
+    "type": "match"
+  },
+  "outer_rmac_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "outer_rmac_MATCH": {
+    "key_width": 58,
+    "type": "match"
+  },
+  "port_vlan_mapping_ACTION": {
+    "num_fields": 21,
+    "type": "action"
+  },
+  "port_vlan_mapping_MATCH": {
+    "key_width": 42,
+    "type": "match"
+  },
+  "rmac_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "rmac_MATCH": {
+    "key_width": 58,
+    "type": "match"
+  },
+  "sflow_ing_take_sample_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "sflow_ing_take_sample_MATCH": {
+    "key_width": 48,
+    "type": "match"
+  },
+  "sflow_ingress_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "sflow_ingress_MATCH": {
+    "key_width": 81,
+    "type": "match"
+  },
+  "smac_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "smac_MATCH": {
+    "key_width": 64,
+    "type": "match"
+  },
+  "spanning_tree_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "spanning_tree_MATCH": {
+    "key_width": 26,
+    "type": "match"
+  },
+  "storm_control_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "storm_control_MATCH": {
+    "key_width": 12,
+    "type": "match"
+  },
+  "storm_control_stats_ACTION": {
+    "num_fields": 0,
+    "type": "action"
+  },
+  "storm_control_stats_MATCH": {
+    "key_width": 11,
+    "type": "match"
+  },
+  "switch_config_params_ACTION": {
+    "num_fields": 6,
+    "type": "action"
+  },
+  "switch_config_params_MATCH": {
+    "key_width": 1,
+    "type": "match"
+  },
+  "system_acl_ACTION": {
+    "num_fields": 7,
+    "type": "action"
+  },
+  "system_acl_MATCH": {
+    "key_width": 153,
+    "type": "match"
+  },
+  "traffic_class_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "traffic_class_MATCH": {
+    "key_width": 13,
+    "type": "match"
+  },
+  "tunnel_ACTION": {
+    "num_fields": 14,
+    "type": "action"
+  },
+  "tunnel_MATCH": {
+    "key_width": 31,
+    "type": "match"
+  },
+  "tunnel_lookup_miss_ACTION": {
+    "num_fields": 8,
+    "type": "action"
+  },
+  "tunnel_lookup_miss_MATCH": {
+    "key_width": 2,
+    "type": "match"
+  },
+  "urpf_bd_ACTION": {
+    "num_fields": 1,
+    "type": "action"
+  },
+  "urpf_bd_MATCH": {
+    "key_width": 32,
+    "type": "match"
+  },
+  "validate_mpls_packet_ACTION": {
+    "num_fields": 2,
+    "type": "action"
+  },
+  "validate_mpls_packet_MATCH": {
+    "key_width": 66,
+    "type": "match"
+  },
+  "validate_outer_ethernet_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "validate_outer_ethernet_MATCH": {
+    "key_width": 98,
+    "type": "match"
+  },
+  "validate_outer_ipv4_packet_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "validate_outer_ipv4_packet_MATCH": {
+    "key_width": 20,
+    "type": "match"
+  },
+  "validate_outer_ipv6_packet_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "validate_outer_ipv6_packet_MATCH": {
+    "key_width": 28,
+    "type": "match"
+  },
+  "validate_packet_ACTION": {
+    "num_fields": 3,
+    "type": "action"
+  },
+  "validate_packet_MATCH": {
+    "key_width": 134,
+    "type": "match"
+  }
+}

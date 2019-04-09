@@ -1,0 +1,9 @@
+line 3: col 10:  no viable alternative at input '('
+line 3: col 18:  extraneous input ')' expecting {'<<', '&&', '||', '==', '!=', '>=', '<=', '++', ';', '(', '[', '.', '<', '>', '-', '+', '*', '/', '%', '&', '|', '^', '?'}
+line 3: col 24:  no viable alternative at input '> c2 ='
+line 3: col 24:  mismatched input '=' expecting {'<<', '&&', '||', '==', '!=', '>=', '<=', '++', ';', '(', '[', '.', '<', '>', '-', '+', '*', '/', '%', '&', '|', '^', '?'}
+line 4: col 10:  no viable alternative at input '('
+line 5: col 10:  no viable alternative at input '('
+Not in a proper number format
+Not in a proper number format
+Not in a proper number format

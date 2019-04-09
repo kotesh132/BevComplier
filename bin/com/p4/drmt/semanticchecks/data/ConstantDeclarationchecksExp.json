@@ -1,0 +1,17 @@
+{  
+    "dataSet":[  
+        {  
+            "inputData":"const bit temp3 = false;",
+            "expectedData":["Line:1:: Width of a bit<> type is at least 0.",
+            "Line:1: Type of a constant should be either bit<>, int<> or int."]
+        },
+        {  
+            "inputData":"\n const bool newline = false;\n",
+            "expectedData":["Line:2: Type of a constant should be either bit<>, int<> or int."]
+        },
+        {  
+            "inputData":"const int<1> temp3 = 1;",
+            "expectedData":["Line:1: Width of an int<> type is at least 1."]
+        }
+    ]
+}

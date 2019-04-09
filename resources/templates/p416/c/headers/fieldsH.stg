@@ -1,0 +1,39 @@
+fields_ifndef()::=<<
+#ifndef FIELDS_H_
+#define FIELDS_H_
+
+>>
+
+fields_include()::=<<
+
+#include \<stdint.h>
+
+#define ARRAY_SIZE(a) sizeof(a)/sizeof(a[0])
+>>
+
+fields_consts()::=<<
+
+const char *table_names[];
+const char *tableid_control_map[];
+const void* control_action_map[];
+const void* all_actions[];
+>>
+
+fields_endif()::=<<
+
+#endif
+>>
+
+fields_helperMethodsDecl()::=<<
+int get_table_id(const char *table_name);
+
+const char* get_control_name(const char *table_name);
+
+int get_action_id(const char *action_name);
+
+int get_tables_count();
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

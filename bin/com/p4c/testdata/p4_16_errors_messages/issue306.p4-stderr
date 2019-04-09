@@ -1,0 +1,15 @@
+Not possible to calculate size of Externsexternpacket_out{voidemit<T>(inThdr);}
+Not possible to calculate size of Externsexternpacket_out{voidemit<T>(inThdr);}
+Not possible to calculate size of Externsexternpacket_out{voidemit<T>(inThdr);}
+Not possible to calculate size of Externsexternpacket_out{voidemit<T>(inThdr);}
+Line:216: 'p.stack.next' can not be resolved
+Line:216: p.stack can not be resolved
+Line:216: extract method invoked with non header type argument: b.extract(p.stack.next);
+Line:217: 'p.stack.last.op_code' can not be resolved
+Line:224: 'p.stack.next' can not be resolved
+Line:224: p.stack can not be resolved
+Line:224: extract method invoked with non header type argument: b.extract(p.stack.next);
+Line:225: 'p.stack.last.op_code' can not be resolved
+Line:241: 'p.stack[0].op_code' can not be resolved
+Line:259: 'p.stack' can not be resolved
+Line:259: 'p.stack' can not be resolved

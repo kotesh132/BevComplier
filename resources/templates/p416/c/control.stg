@@ -1,0 +1,28 @@
+control_include()::=<<
+#include "control.h"
+#include "headers.h"
+#include "actions.h"
+#include "tables.h"
+#include "primitives.h"
+#include "enums.h"
+#include \<stdio.h>
+#include \<stdlib.h>
+
+>>
+
+control_apply(controlMethodToArgumentsMap, controlMethodToBodyMap, controlMethodToCopyInArgInitMap, controlMethodToCopyOutArgInitMap)::=<<
+
+<controlMethodToArgumentsMap.keys: {controlName | void <controlName>_apply(<controlMethodToArgumentsMap.(controlName)>)
+{
+<!    //Copy in
+<controlMethodToCopyInArgInitMap.(controlName)> !>
+<controlMethodToBodyMap.(controlName)>
+<!    //Copy out
+<controlMethodToCopyOutArgInitMap.(controlName)> !>
+\}<\n>
+}>
+>>
+
+top(stmts)::=<<
+<stmts :{ item |<item><\n>}>
+>>

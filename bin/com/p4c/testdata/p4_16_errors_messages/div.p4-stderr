@@ -1,0 +1,8 @@
+Line:4: Division not defined on negative values: 8 / -2
+Line:4: Division is not defined for negative numbers
+Line:6: Modulo is not defined for negative numbers
+Line:6: Modulo not defined on negative values: 10 % -2
+Line:4: Division is not defined for negative numbers
+Line:6: Modulo is not defined for negative numbers
+Line:4: Division is not defined for negative numbers
+Line:6: Modulo is not defined for negative numbers
